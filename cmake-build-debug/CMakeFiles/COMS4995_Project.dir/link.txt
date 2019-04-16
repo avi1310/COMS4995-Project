@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libCOMS4995_Project.a  CMakeFiles/COMS4995_Project.dir/library.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libCOMS4995_Project.a

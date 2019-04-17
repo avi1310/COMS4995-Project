@@ -1,3 +1,0 @@
-/Users/sachin/Columbia/C++/COMS4995-Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/sachin/Columbia/C++/COMS4995-Project/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/sachin/Columbia/C++/COMS4995-Project/cmake-build-debug/CMakeFiles/COMS4995_Project.dir

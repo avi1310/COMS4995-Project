@@ -15,7 +15,56 @@ namespace jpeg
 
 class Image
 {
+private:
+    // Note that m_errorMgr is a shared ptr and will be shared
+    // between objects if one copy constructs from another
+    std::shared_ptr<::jpeg_error_mgr> m_errorMgr;
+    std::vector<std::vector<uint8_t>> m_bitmapData;
+    size_t                            m_width;
+    size_t                            m_height;
+    size_t                            m_pixelSize;
+    int                               m_colourSpace;
+
+    // explicit Image(
+    //     const size_t x,
+    //     const size_t y,
+    //     const std::vector<std::vector<uint8_t>> bitmap_Data,
+    //     const size_t pixelSize = 3,
+    //     const int colourSpace = 2
+    // )
+    // {
+    //     m_errorMgr = std::make_shared<::jpeg_error_mgr>();
+    //     // Note this usage of a lambda to provide our own error handler
+    //     // to libjpeg. If we do not supply a handler, and libjpeg hits
+    //     // a problem, it just prints the error message and calls exit().
+    //     m_errorMgr->error_exit = [](::j_common_ptr cinfo){
+    //         char jpegLastErrorMsg[JMSG_LENGTH_MAX];
+    //         // Call the function pointer to get the error message
+    //         (*(cinfo->err->format_message))(cinfo, jpegLastErrorMsg);
+    //         throw std::runtime_error(jpegLastErrorMsg);
+    //     };
+
+    //     m_width       = x;
+    //     m_height      = y;
+    //     m_pixelSize   = pixelSize;
+    //     m_colourSpace = colourSpace;
+
+    //     m_bitmapData.clear();
+    //     m_bitmapData.reserve(m_height);
+
+    //     for(size_t i = 0; i < m_height && i < bitmap_Data.size(); ++i){
+    //         for(size_t j = 0; i < m_height &&)
+    //     }
+    // }
+
 public:
+    explicit Image(
+        const size_t x,
+        const size_t y,
+        const size_t pixelSize = 3,
+        const int colourSpace = 2
+    );
+
     // Currently can only construct with an existing file.
     // Will throw if file cannot be loaded, or is in the wrong format,
     // or some other error is encountered.
@@ -82,15 +131,10 @@ public:
     // Convenience function which either calls shrink or expand
     void resize( size_t newWidth );
 
-public:
-    // Note that m_errorMgr is a shared ptr and will be shared
-    // between objects if one copy constructs from another
-    std::shared_ptr<::jpeg_error_mgr> m_errorMgr;
-    std::vector<std::vector<uint8_t>> m_bitmapData;
-    size_t                            m_width;
-    size_t                            m_height;
-    size_t                            m_pixelSize;
-    int                               m_colourSpace;
+    size_t getWidth();
+    size_t getHeight();
+
+
 };
 
 } // namespace jpeg

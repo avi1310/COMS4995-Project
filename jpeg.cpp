@@ -7,24 +7,60 @@
 #include <string>
 #include <vector>
 
+#include<iostream>
 namespace marengo
 {
 namespace jpeg
 {
+
+// Image::Image(
+//     const size_t x,
+//     const size_t y,
+//     const std::vector<std::vector<uint8_t>> bitmap_Data,
+//     const size_t pixelSize,
+//     const int colourSpace)
+// {
+    
+// }
+
+Image::Image(const size_t x, const size_t y, const size_t pixelSize, const int colourSpace)
+{
+    m_errorMgr = std::make_shared<::jpeg_error_mgr>();
+    // Note this usage of a lambda to provide our own error handler
+    // to libjpeg. If we do not supply a handler, and libjpeg hits
+    // a problem, it just prints the error message and calls exit().
+    m_errorMgr->error_exit = [](::j_common_ptr cinfo){
+        char jpegLastErrorMsg[JMSG_LENGTH_MAX];
+        // Call the function pointer to get the error message
+        (*(cinfo->err->format_message))(cinfo, jpegLastErrorMsg);
+        throw std::runtime_error(jpegLastErrorMsg);
+    };
+
+    m_width       = x;
+    m_height      = y;
+    m_pixelSize   = pixelSize;
+    m_colourSpace = colourSpace;
+
+    m_bitmapData.clear();
+    m_bitmapData.reserve(m_height);
+
+    for(size_t i = 0; i < m_height; ++i){
+        std::vector<uint8_t> vec(m_width*m_pixelSize, 0);
+        m_bitmapData.push_back(vec);
+    }
+
+}
 
 Image::Image( const std::string& fileName )
 {
     // Creating a custom deleter for the decompressInfo pointer
     // to ensure ::jpeg_destroy_compress() gets called even if
     // we throw out of this function.
-    auto dt = []( ::jpeg_decompress_struct *ds )
-            {
-                ::jpeg_destroy_decompress( ds );
-            };
-    std::unique_ptr<::jpeg_decompress_struct, decltype(dt)> decompressInfo(
-            new ::jpeg_decompress_struct,
-            dt
-            );
+    auto dt = []( ::jpeg_decompress_struct *ds ){
+        ::jpeg_destroy_decompress( ds );
+    };
+
+    std::unique_ptr<::jpeg_decompress_struct, decltype(dt)> decompressInfo(new ::jpeg_decompress_struct,dt);
 
     // Note this is a shared pointer as we can share this 
     // between objects which have copy constructed from each other
@@ -34,44 +70,40 @@ Image::Image( const std::string& fileName )
     // a FILE pointer.
     // We store the FILE* in a unique_ptr so we can also use the custom
     // deleter here to ensure fclose() gets called even if we throw.
-    auto fdt = []( FILE* fp )
-            {
-                fclose( fp );
-            };
-    std::unique_ptr<FILE, decltype(fdt)> infile(
-            fopen( fileName.c_str(), "rb" ),
-            fdt
-            );
-    if ( infile.get() == NULL )
-    {
-        throw std::runtime_error( "Could not open " + fileName );
+    auto fdt = []( FILE* fp ){
+        fclose( fp );
+    };
+
+    std::unique_ptr<FILE, decltype(fdt)>infile(
+        fopen(fileName.c_str(), "rb"),fdt
+    );
+
+    if (infile.get() == NULL){
+        throw std::runtime_error("Could not open " + fileName);
     }
 
-    decompressInfo->err = ::jpeg_std_error( m_errorMgr.get() );
+    decompressInfo->err = ::jpeg_std_error(m_errorMgr.get());
+
     // Note this usage of a lambda to provide our own error handler
     // to libjpeg. If we do not supply a handler, and libjpeg hits
     // a problem, it just prints the error message and calls exit().
-    m_errorMgr->error_exit = [](::j_common_ptr cinfo)
-        {
-            char jpegLastErrorMsg[JMSG_LENGTH_MAX];
-            // Call the function pointer to get the error message
-            ( *( cinfo->err->format_message ) )
-                ( cinfo, jpegLastErrorMsg );
-            throw std::runtime_error( jpegLastErrorMsg );
-        };
-    ::jpeg_create_decompress( decompressInfo.get() );
+    m_errorMgr->error_exit = [](::j_common_ptr cinfo){
+        char jpegLastErrorMsg[JMSG_LENGTH_MAX];
+        // Call the function pointer to get the error message
+        (*(cinfo->err->format_message))(cinfo, jpegLastErrorMsg);
+        throw std::runtime_error(jpegLastErrorMsg);
+    };
+    ::jpeg_create_decompress(decompressInfo.get());
 
     // Read the file:
-    ::jpeg_stdio_src( decompressInfo.get(), infile.get() );
+    ::jpeg_stdio_src(decompressInfo.get(), infile.get());
 
-    int rc = ::jpeg_read_header( decompressInfo.get(), TRUE );
-    if (rc != 1)
-    {
-        throw std::runtime_error(
-            "File does not seem to be a normal JPEG"
-            );
+    int rc = ::jpeg_read_header(decompressInfo.get(), TRUE);
+    if (rc != 1){
+        throw std::runtime_error("File does not seem to be a normal JPEG");
     }
-    ::jpeg_start_decompress( decompressInfo.get() );
+
+    ::jpeg_start_decompress(decompressInfo.get());
 
     m_width       = decompressInfo->output_width;
     m_height      = decompressInfo->output_height;
@@ -81,25 +113,19 @@ Image::Image( const std::string& fileName )
     size_t row_stride = m_width * m_pixelSize;
 
     m_bitmapData.clear();
-    m_bitmapData.reserve( m_height );
+    m_bitmapData.reserve(m_height);
 
-    while ( decompressInfo->output_scanline < m_height )
-    {
+    while (decompressInfo->output_scanline < m_height){
         std::vector<uint8_t> vec(row_stride);
         uint8_t* p = vec.data();
-        ::jpeg_read_scanlines( decompressInfo.get(), &p, 1 );
-        m_bitmapData.push_back( vec );
+        ::jpeg_read_scanlines(decompressInfo.get(), &p, 1);
+        m_bitmapData.push_back(vec);
     }
-    ::jpeg_finish_decompress( decompressInfo.get() );
-}
+    ::jpeg_finish_decompress(decompressInfo.get());
 
-// Image::Image( size_t m_width, size_t m_height, size_t m_pixelSize ) 
-// {
-//     m_height = m_height;
-//     m_width = m_width;
-//     m_pixelSize = m_pixelSize;
-//     // m_bitmapData = m_bitmapData;
-// }
+    // std::cout<<"m_errorMgr:"<<m_errorMgr<<" m_width:"<<m_width<<
+    //     " m_height:"<<m_height<<" m_pixelSize:"<<m_pixelSize<<" m_colourSpace:"<<m_colourSpace<<"\n";
+}
 
 // Copy constructor
 Image::Image( const Image& rhs )
@@ -112,40 +138,29 @@ Image::Image( const Image& rhs )
     m_colourSpace   = rhs.m_colourSpace;
 }
 
-// Image::Image(size_t m_width, size_t m_height, size_t m_pixelSize) {
-//     m_width = m_width;
-//     m_height = m_height;
-//     m_pixelSize = m_pixelSize;
-// }
-
 Image::~Image()
 {
 }
 
 void Image::save( const std::string& fileName, int quality ) const
 {
-    if ( quality < 0 )
-    {
+    if ( quality < 0 ){
         quality = 0;
     }
-    if ( quality > 100 )
-    {
+    if ( quality > 100 ){
         quality = 100;
     }
-    FILE* outfile = fopen( fileName.c_str(), "wb" );
-    if ( outfile == NULL )
-    {
-        throw std::runtime_error(
-            "Could not open " + fileName + " for writing"
-            );
+    FILE* outfile = fopen(fileName.c_str(), "wb");
+    if ( outfile == NULL ){
+        throw std::runtime_error("Could not open " + fileName + " for writing");
     }
     // Creating a custom deleter for the compressInfo pointer
     // to ensure ::jpeg_destroy_compress() gets called even if
     // we throw out of this function.
-    auto dt = []( ::jpeg_compress_struct *cs )
-            {
-                ::jpeg_destroy_compress( cs );
-            };
+    auto dt = []( ::jpeg_compress_struct *cs ){
+        ::jpeg_destroy_compress( cs );
+
+    };
     std::unique_ptr<::jpeg_compress_struct, decltype(dt)> compressInfo(
             new ::jpeg_compress_struct,
             dt );
@@ -160,18 +175,13 @@ void Image::save( const std::string& fileName, int quality ) const
     ::jpeg_set_defaults( compressInfo.get() );
     ::jpeg_set_quality( compressInfo.get(), quality, TRUE );
     ::jpeg_start_compress( compressInfo.get(), TRUE);
-    for ( auto const& vecLine : m_bitmapData )
-    {
+    for ( auto const& vecLine : m_bitmapData ){
         ::JSAMPROW rowPtr[1];
         // Casting const-ness away here because the jpeglib
         // call expects a non-const pointer. It presumably
         // doesn't modify our data.
         rowPtr[0] = const_cast<::JSAMPROW>( vecLine.data() );
-        ::jpeg_write_scanlines(
-            compressInfo.get(),
-            rowPtr,
-            1
-            );
+        ::jpeg_write_scanlines(compressInfo.get(),rowPtr,1);
     }
     ::jpeg_finish_compress( compressInfo.get() );
     fclose( outfile );
@@ -180,16 +190,12 @@ void Image::save( const std::string& fileName, int quality ) const
 void Image::savePpm( const std::string& fileName ) const
 {
     std::ofstream ofs( fileName, std::ios::out | std::ios::binary );
-    if ( ! ofs )
-    {
-        throw std::runtime_error(
-            "Could not open " + fileName + " for saving"
-            );
+    if ( !ofs ){
+        throw std::runtime_error("Could not open " + fileName + " for saving");
     }
     // Write the header
     ofs << "P6 " << m_width << " " << m_height << " 255\n";
-    for ( auto& v : m_bitmapData )
-    {
+    for ( auto& v : m_bitmapData ){
         ofs.write( reinterpret_cast<const char *>(v.data()), v.size() );
     }
     ofs.close();
@@ -197,17 +203,14 @@ void Image::savePpm( const std::string& fileName ) const
 
 std::vector<uint8_t> Image::getPixel( size_t x, size_t y ) const
 {
-    // if ( y >= m_bitmapData.size() )
-    // {
-    //     throw std::out_of_range( "Y value too large" );
-    // }
-    // if ( x >= m_bitmapData[0].size() / m_pixelSize )
-    // {
-    //     throw std::out_of_range( "X value too large" );
-    // }
+    if (y >= m_bitmapData.size()){
+        throw std::out_of_range( "Y value too large" );
+    }
+    if (x >= m_bitmapData[0].size() / m_pixelSize){
+        throw std::out_of_range( "X value too large" );
+    }
     std::vector<uint8_t> vec;
-    for ( size_t n = 0; n < m_pixelSize; ++n )
-    {
+    for (size_t n = 0; n < m_pixelSize; ++n){
         vec.push_back( m_bitmapData[ y ][ x * m_pixelSize + n ] );
     }
     return vec;
@@ -216,16 +219,14 @@ std::vector<uint8_t> Image::getPixel( size_t x, size_t y ) const
 uint8_t Image::getLuminance( size_t x, size_t y ) const
 {
     auto vec = getPixel( x, y );
-    if ( vec.size() == 1 )
-    {   // monochrome image
+    if ( vec.size() == 1 ){
+        // monochrome image
         return vec[0];
     }
-    if ( vec.size() == 3 )
-    {
+    if ( vec.size() == 3 ){
         // fast approximation of luminance:
         return static_cast<uint8_t>(
-            ( vec[0] * 2 + vec[1] * 3 + vec[2] ) / 6
-            );
+            (vec[0] * 2 + vec[1] * 3 + vec[2]) / 6);
     }
     return 0;
 }
@@ -233,34 +234,27 @@ uint8_t Image::getLuminance( size_t x, size_t y ) const
 std::vector<uint8_t>
 Image::getAverage( size_t x, size_t y, size_t boxSize ) const
 {
-    if ( boxSize > m_width )
-    {
+    if ( boxSize > m_width ){
         throw std::out_of_range( "Box size is greater than image width" );
     }
-    if ( boxSize > m_height )
-    {
+    if ( boxSize > m_height ){
         throw std::out_of_range( "Box size is greater than image height" );
     }
-    if ( x + boxSize  >= m_width )
-    {
+    if ( x + boxSize  >= m_width ){
         x = m_width - boxSize;
     }
-    if ( y + boxSize >= m_height )
-    {
+    if ( y + boxSize >= m_height ){
         y = m_height - boxSize;
     }
     // running totals
     size_t r{ 0 }; // we just use this one for mono images
     size_t g{ 0 };
     size_t b{ 0 };
-    for ( size_t row = y; row < y + boxSize; ++row )
-    {
-        for ( size_t col = x; col < x + boxSize; ++col )
-        {
+    for ( size_t row = y; row < y + boxSize; ++row ){
+        for ( size_t col = x; col < x + boxSize; ++col ){
             auto vec = getPixel( col, row );
             r += vec[0];
-            if ( vec.size() == 3 )
-            {
+            if ( vec.size() == 3 ){
                 g += vec[1];
                 b += vec[2];
             }
@@ -269,8 +263,7 @@ Image::getAverage( size_t x, size_t y, size_t boxSize ) const
     std::vector<uint8_t> retVec;
     r /= ( boxSize * boxSize );
     retVec.push_back( r );
-    if ( m_pixelSize == 3 )
-    {
+    if ( m_pixelSize == 3 ){
         g /= ( boxSize * boxSize );
         retVec.push_back( g );
         b /= ( boxSize * boxSize );
@@ -281,13 +274,11 @@ Image::getAverage( size_t x, size_t y, size_t boxSize ) const
 
 void Image::shrink( size_t newWidth )
 {
-    if ( newWidth >= m_width )
-    {
+    if ( newWidth >= m_width ){
         return;
     }
 
-    if ( newWidth == 0 )
-    {
+    if ( newWidth == 0 ){
         throw std::out_of_range( "New width cannot be zero" );
     }
 
@@ -306,21 +297,17 @@ void Image::shrink( size_t newWidth )
     std::vector<size_t> runningTotals( newWidth * m_pixelSize );
     std::vector<size_t> runningCounts( newWidth * m_pixelSize );
     size_t oldRow = 0;
-    for ( size_t row = 0; row < m_height; ++row )
-    {
-        for ( size_t col = 0; col < m_width * m_pixelSize; ++col )
-        {
+    for ( size_t row = 0; row < m_height; ++row ){
+        for ( size_t col = 0; col < m_width * m_pixelSize; ++col ){
             size_t idx = scaleFactor * col;
             runningTotals[ idx ] += m_bitmapData[row][col];
             ++runningCounts[ idx ];
         }
-        if ( static_cast<size_t>( scaleFactor * row ) > oldRow )
-        {
+        if ( static_cast<size_t>( scaleFactor * row ) > oldRow ){
             oldRow = scaleFactor * row;
             std::vector<uint8_t> newLine;
             newLine.reserve( newWidth * m_pixelSize );
-            for ( size_t i = 0; i < newWidth * m_pixelSize; ++i )
-            {
+            for ( size_t i = 0; i < newWidth * m_pixelSize; ++i ){
                 newLine.push_back( runningTotals[i] / runningCounts[i] );
                 runningTotals[i] = 0;
                 runningCounts[i] = 0;
@@ -335,8 +322,7 @@ void Image::shrink( size_t newWidth )
 
 void Image::expand( size_t newWidth )
 {
-    if ( newWidth <= m_width )
-    {
+    if ( newWidth <= m_width ){
         return;
     }
 
@@ -345,15 +331,12 @@ void Image::expand( size_t newWidth )
     std::vector<std::vector<uint8_t>> vecNewBitmap;
     vecNewBitmap.reserve( newHeight );
 
-    for ( size_t row = 0; row < newHeight; ++row )
-    {
+    for ( size_t row = 0; row < newHeight; ++row ){
         size_t oldRow = row / scaleFactor;
         std::vector<uint8_t> vecNewLine( newWidth * m_pixelSize );
-        for ( size_t col = 0; col < newWidth; ++col )
-        {
+        for ( size_t col = 0; col < newWidth; ++col ){
             size_t oldCol = col / scaleFactor;
-            for ( size_t n = 0; n < m_pixelSize; ++n )
-            {
+            for ( size_t n = 0; n < m_pixelSize; ++n ){
                 vecNewLine[ col * m_pixelSize + n ] =
                     m_bitmapData[ oldRow ][ oldCol * m_pixelSize + n ];
             }
@@ -367,30 +350,34 @@ void Image::expand( size_t newWidth )
 
 void Image::resize( size_t newWidth )
 {
-    if ( newWidth < m_width )
-    {
+    if ( newWidth < m_width ){
         shrink( newWidth );
     }
-    else if ( newWidth > m_width )
-    {
+    else if ( newWidth > m_width ){
         expand( newWidth );
     }
 }
 
 void Image::setPixel(size_t x, size_t y, std::vector<uint8_t> pixelValue)
 {
-    if ( y >= m_bitmapData.size() )
-    {
-        throw std::out_of_range( "Y value too large" );
+    if ( y >= m_bitmapData.size() ){
+        std::cout<<"y:"<<y<<" m_bitmapData:"<<m_bitmapData.size()<<"\n";
+        throw std::out_of_range( "SetPixel: Y value too large" );
     }
-    if ( x >= m_bitmapData[0].size() / m_pixelSize )
-    {
-        throw std::out_of_range( "X value too large" );
+    if ( x >= m_bitmapData[0].size() / m_pixelSize ){
+        throw std::out_of_range( "SetPixel: X value too large" );
     }
-    for ( size_t n = 0; n < m_pixelSize; ++n )
-    {
+    for ( size_t n = 0; n < m_pixelSize; ++n ){
         m_bitmapData[ y ][ x * m_pixelSize + n ] = pixelValue[n];
     }
+}
+
+size_t Image::getWidth(){
+    return m_width;
+}
+
+size_t Image::getHeight(){
+    return m_height;
 }
 
 

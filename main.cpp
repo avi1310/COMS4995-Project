@@ -1,6 +1,7 @@
 #include "jpeg.h"
 using namespace std;
 #include <iostream>
+#include <map>
 
 void display( uint8_t luma )
 {
@@ -20,7 +21,7 @@ int main( int argc, char* argv[] )
         std::cout << "No jpeg file specified\n";
         return 1;
     }
-    try
+    try 
     {
         using namespace marengo::jpeg;
         // Constructor expects a filename to load:
@@ -411,89 +412,118 @@ int main( int argc, char* argv[] )
         //     {-1, 2, -1},
         // };
 
-        float kernel[3][3] = {
-            {-1, -1, 2},
-            {-1, 2, -1},
-            {2, -1, -1},
-        };
+        // float kernel[3][3] = {
+        //     {-1, -1, 2},
+        //     {-1, 2, -1},
+        //     {2, -1, -1},
+        // };
 
-        for(size_t y = 0; y < height; y++) {
-            for(size_t x = 0; x < width; x++) {
-               // auto pixels = blur.getPixel(x, y);
-                blur.m_bitmapData[y][x*3] = 0.0;
-                blur.m_bitmapData[y][x*3 + 1] = 0.0;
-                blur.m_bitmapData[y][x*3 + 2] = 0.0;
-            }
-        }
-        cout<<"Reached here"<<endl;
-        for(size_t y = 1; y < height-1; y++) {
-            for(size_t x = 1; x < width-1; x++) {
-                // float sum[3] = {0.0, 0.0, 0.0};
-                float sum = 0.0;
-                for(int k = -1; k <= 1; k++) {
-                    for(int j = -1; j <= 1; j++) {
-                        // cout<<"Now"<<x<<' '<<y<<endl;
-                        auto pixels = orig_m.getPixel(x - k, y - j);
-                        // int i=0;
-                        for(auto &p: pixels) {
-                            // sum[i] = sum[i] + kernel[j+1][k+1]*p;
-                            // i++;
-                            sum = sum + kernel[j+1][k+1]*p;
-                        }
-                    }
-                }
-                blur_img.m_bitmapData[y][x*3] = sum;
-                blur_img.m_bitmapData[y][x*3 + 1] = sum;
-                blur_img.m_bitmapData[y][x*3 + 2] = sum;
-            }
-        }
+        // for(size_t y = 0; y < height; y++) {
+        //     for(size_t x = 0; x < width; x++) {
+        //        // auto pixels = blur.getPixel(x, y);
+        //         blur.m_bitmapData[y][x*3] = 0.0;
+        //         blur.m_bitmapData[y][x*3 + 1] = 0.0;
+        //         blur.m_bitmapData[y][x*3 + 2] = 0.0;
+        //     }
+        // }
+        // cout<<"Reached here"<<endl;
+        // for(size_t y = 1; y < height-1; y++) {
+        //     for(size_t x = 1; x < width-1; x++) {
+        //         // float sum[3] = {0.0, 0.0, 0.0};
+        //         float sum = 0.0;
+        //         for(int k = -1; k <= 1; k++) {
+        //             for(int j = -1; j <= 1; j++) {
+        //                 // cout<<"Now"<<x<<' '<<y<<endl;
+        //                 auto pixels = orig_m.getPixel(x - k, y - j);
+        //                 // int i=0;
+        //                 for(auto &p: pixels) {
+        //                     // sum[i] = sum[i] + kernel[j+1][k+1]*p;
+        //                     // i++;
+        //                     sum = sum + kernel[j+1][k+1]*p;
+        //                 }
+        //             }
+        //         }
+        //         blur_img.m_bitmapData[y][x*3] = sum;
+        //         blur_img.m_bitmapData[y][x*3 + 1] = sum;
+        //         blur_img.m_bitmapData[y][x*3 + 2] = sum;
+        //     }
+        // }
 
-        blur_img.save("edge_2.jpeg", 100);
+        // blur_img.save("edge_2.jpeg", 100);
 //////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////
 
-        // Rotate
+        // Rotate CCW
+        // Image orig_r(argv[1]);
+        // Image new_r(argv[1]);
+        // Image o_r = orig_r;
+        // Image n_r = new_r;
+
+        // // or = 375 h, 500 w
+        // // nr = 500 h, 375 w
+        // n_r.m_width = o_r.m_height;
+        // n_r.m_height = o_r.m_width;
+
+        // n_r.m_bitmapData.resize(n_r.m_height);
+        // for(int i = 0; i < (int)n_r.m_height; i++) {
+        //     n_r.m_bitmapData[i].resize(n_r.m_width*3);
+        // }
+        // for(size_t y = 0; y < o_r.m_height; y++) {
+        //     for(size_t x = 0; x < o_r.m_width; x++) {
+        //         n_r.setPixel(y, x, o_r.getPixel(o_r.m_width - 1 - x, y));
+        //     }
+        // }
+        // n_r.save("rotate90.jpeg", 100);
+
+/////////////////////////////////////////////////////////
+        // Rotate CW
+        // Image orig_r(argv[1]);
+        // Image new_r(argv[1]);
+        // Image o_r = orig_r;
+        // Image n_r = new_r;
+
+        // // or = 375 h, 500 w
+        // // nr = 500 h, 375 w
+        // n_r.m_width = o_r.m_height;
+        // n_r.m_height = o_r.m_width;
+
+        // n_r.m_bitmapData.resize(n_r.m_height);
+        // for(int i = 0; i < (int)n_r.m_height; i++) {
+        //     n_r.m_bitmapData[i].resize(n_r.m_width*3);
+        // }
+        // for(int y = (int)o_r.m_height - 1; y>=0 ; y--) {
+        //     for(size_t x = 0; x < o_r.m_width; x++) {
+        //         cout<<x<<' '<<y<<endl;
+        //         n_r.setPixel(y, x, o_r.getPixel(x, o_r.m_height - 1 - y));
+        //     }
+        // }
+        // n_r.save("rotate90_2.jpeg", 100);
+
+///////////////////////////////////////////////////////////
+        // Rotate 180
+
         Image orig_r(argv[1]);
         Image new_r(argv[1]);
         Image o_r = orig_r;
         Image n_r = new_r;
-        cout<<o_r.m_bitmapData.size()<<' '<<o_r.m_bitmapData[0].size()<<endl; 
-        // n_r.m_width = o_r.getHeight();
-        // n_r.m_height = o_r.getWidth();
-        // n_r.m_bitmapData.resize(o_r.getWidth());
-        // for(size_t x = 0; x < n_r.m_height; x++) {
-        //     n_r.m_bitmapData[x].resize(3*o_r.getHeight());
-        // }
 
-        // cout<<"fewfef"<<n_r.m_bitmapData.size()<<' '<<n_r.m_bitmapData[0].size()<<endl;
-        // for(size_t i = 0; i < o_r.; i++) {
-        //     for(size_t j = 0; j < new_r.m_height; j++) {
-                
+        // or = 375 h, 500 w
+        // nr = 500 h, 375 w
+        // n_r.m_width = o_r.m_height;
+        // n_r.m_height = o_r.m_width;
+
+        // n_r.m_bitmapData.resize(n_r.m_height);
+        // for(int i = 0; i < (int)n_r.m_height; i++) {
+        //     n_r.m_bitmapData[i].resize(n_r.m_width*3);
+        // }
+        // for(size_t y = 0; y < o_r.m_height ; y++) {
+        //     for(size_t x = 0; x < o_r.m_width; x++) {
+        //         // cout<<x<<' '<<y<<endl;
+        //         n_r.setPixel(o_r.m_width - 1 - x, o_r.m_height - 1 - y, o_r.getPixel(x, y));
         //     }
         // }
-        // original is 375*1500, just make it 1500*375
-        // for(size_t x = 0; x < 1500; x++ ) {
-        //     for(size_t y = 0; y < 375; y++) {
-        //         n_r.m_bitmapData[y][x] = 0;
-        //     }
-        // }
-        // n_r.m_bitmapData.resize(1500);
-        // for(int i = 0; i < 1500; i++) {
-        //     n_r.m_bitmapData[i].resize(375);
-        // }
-        // for(int i = 0; i < 1500; i++) {
-        //     for(int j = 0; j < 375; j++) {
-        //         n_r.m_bitmapData[i][j] = o_r.m_bitmapData[375-1-j][i];
-        //     }
-        // }
-
-        // n_r.m_height = 500;
-        // n_r.m_width = 375;
-        // n_r.save("rotate90.jpeg", 100);
-        // new_r.m_bitmapData.resize()
-        // for(size_t x = 0; x < o)
-
+        // n_r.save("rotate180.jpeg", 100);
 
 ////////////////////////////////////////////////////////////////
 
@@ -551,6 +581,14 @@ int main( int argc, char* argv[] )
 
 
 /////////////////////////////////////////////////////////////
+        Image trialguy(1920,1080);
+        for(size_t i=0; i<trialguy.getWidth(); i++){
+            for(size_t j=0;j<trialguy.getHeight();j++){
+                std::vector<uint8_t> temp {255, 100, 100};
+                trialguy.setPixel(i,j,temp);
+            }
+        }
+        trialguy.save("Trial.jpeg", 100);
 
         std::cout << "\nImage height: " << img.getHeight();
         std::cout << "\nImage width : " << img.getWidth();

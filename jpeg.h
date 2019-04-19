@@ -15,7 +15,7 @@ namespace jpeg
 
 class Image
 {
-private:
+public:
     // Note that m_errorMgr is a shared ptr and will be shared
     // between objects if one copy constructs from another
     std::shared_ptr<::jpeg_error_mgr> m_errorMgr;

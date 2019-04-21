@@ -2,6 +2,7 @@
 using namespace std;
 #include <iostream>
 #include <map>
+#include "imgLibrary.h"
 
 void display( uint8_t luma )
 {
@@ -30,8 +31,10 @@ int main( int argc, char* argv[] )
         // Copy construct a second version so we can
         // shrink non-destructively. Not really necessary
         // here, but just to show it can be done :)
-        
-        
+        imgLibrary testImg1(argv[1]);
+        testImg1.grayScale();
+
+
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);
         // Shrink proportionally to a specific width (in px)
         // img.shrink( 60 );
@@ -60,63 +63,63 @@ int main( int argc, char* argv[] )
         //     cout<<'\n';
         // }
 /////////////////////////////////////////////////////////////////////////
-        Image dupImage( argv[1] );
-        Image dupImg = dupImage;
-        cout<<"\n\n\n";
-        // for ( size_t y = 0; y < height; ++y )
-        // {   
-        //     for ( size_t x = 0; x < width; ++x )
-        //     {
-        //         // uint8_t luma = img.getLuminance( x, y );
-        //         // display( luma );
-        //         vector<uint8_t> p2;
-        //         vector<uint8_t> pixels = img.getPixel( x, y);
-        //         int i = 0;
-        //         for(auto &p: pixels) {
-        //             // cout<<(int)p<<' ';
-        //             dupImg.m_bitmapData[y][x*3 + i] = 2*int(p);
-        //             i++;
-        //             // pp.push_back(2*int(p));
-        //             // p2.push_back(2*int(p));
-        //         }
-        //         // dupImg.m_bitmapData[y][x] = pp;
-        //         // cout<<'\n';
-        //     }
-        //     // std::cout << "\n";
-        // }
-        // dupImg.save("output.jpeg", 100);
+//        Image dupImage( argv[1] );
+//        Image dupImg = dupImage;
+//        cout<<"\n\n\n";
+//         for ( size_t y = 0; y < height; ++y )
+//         {
+//             for ( size_t x = 0; x < width; ++x )
+//             {
+//                 // uint8_t luma = img.getLuminance( x, y );
+//                 // display( luma );
+//                 vector<uint8_t> p2;
+//                 vector<uint8_t> pixels = img.getPixel( x, y);
+//                 int i = 0;
+//                 for(auto &p: pixels) {
+//                     // cout<<(int)p<<' ';
+//                     dupImg.m_bitmapData[y][x*3 + i] = 2*int(p);
+//                     i++;
+//                     // pp.push_back(2*int(p));
+//                     // p2.push_back(2*int(p));
+//                 }
+//                 // dupImg.m_bitmapData[y][x] = pp;
+//                 // cout<<'\n';
+//             }
+//             // std::cout << "\n";
+//         }
+//         dupImg.save("output.jpeg", 100);
 //////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////
         Image dup_gray( argv[1] );
         Image dup_g = dup_gray;
         /** Dup grayscale **/
-        // for ( size_t y = 0; y < height; ++y )
-        // {   
-        //     for ( size_t x = 0; x < width; ++x )
-        //     {
-        //         // uint8_t luma = img.getLuminance( x, y );
-        //         // display( luma );
-        //         vector<uint8_t> p2;
-        //         vector<uint8_t> pixels = img.getPixel( x, y);
-        //         // int i = 0;
-        //         // for(auto &p: pixels) {
-        //             // cout<<(int)p<<' ';
-
-        //         dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
-        //         dup_g.m_bitmapData[y][x*3+1] = (int)img.getLuminance(x, y);
-        //         dup_g.m_bitmapData[y][x*3+2] = (int)img.getLuminance(x, y);
-        //         // dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
-        //             // i++;
-        //             // pp.push_back(2*int(p));
-        //             // p2.push_back(2*int(p));
-        //         // }
-        //         // dupImg.m_bitmapData[y][x] = pp;
-        //         // cout<<'\n';
-        //     }
-        //     // std::cout << "\n";
-        // }
-        // dup_g.save("output_grayscale.jpeg", 100);
+//         for ( size_t y = 0; y < height; ++y )
+//         {
+//             for ( size_t x = 0; x < width; ++x )
+//             {
+//                 // uint8_t luma = img.getLuminance( x, y );
+//                 // display( luma );
+//                 vector<uint8_t> p2;
+//                 vector<uint8_t> pixels = img.getPixel( x, y);
+//                 // int i = 0;
+//                 // for(auto &p: pixels) {
+//                     // cout<<(int)p<<' ';
+//
+//                 dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
+//                 dup_g.m_bitmapData[y][x*3+1] = (int)img.getLuminance(x, y);
+//                 dup_g.m_bitmapData[y][x*3+2] = (int)img.getLuminance(x, y);
+//                 // dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
+//                     // i++;
+//                     // pp.push_back(2*int(p));
+//                     // p2.push_back(2*int(p));
+//                 // }
+//                 // dupImg.m_bitmapData[y][x] = pp;
+//                 // cout<<'\n';
+//             }
+//             // std::cout << "\n";
+//         }
+//         dup_g.save("output_grayscale.jpeg", 100);
 /////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////

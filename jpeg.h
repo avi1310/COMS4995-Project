@@ -76,9 +76,9 @@ public:
     Image( const Image& rhs );
 
     // But assigment and move operations are currently disallowed
-    Image& operator=( const Image& ) = delete;
-    Image( Image&& )                 = delete;
-    Image& operator=( Image&& )      = delete;
+    // Image& operator=( const Image& );
+    // Image( Image&& )                 = delete;
+    // Image& operator=( Image&& )      = delete;
 
     // pass in the values
     // Image(size_t m_width, size_t m_height, size_t m_pixelSize);

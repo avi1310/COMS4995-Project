@@ -26,7 +26,8 @@ int main( int argc, char* argv[] )
         using namespace marengo::jpeg;
         // Constructor expects a filename to load:
         Image imgOriginal( argv[1] );
-        Image img = imgOriginal;
+        Image img(imgOriginal.getWidth(), imgOriginal.getHeight());
+        img = imgOriginal;
         // Copy construct a second version so we can
         // shrink non-destructively. Not really necessary
         // here, but just to show it can be done :)
@@ -38,6 +39,7 @@ int main( int argc, char* argv[] )
         // dupImg.shrink(60);
 
         // Display the image in ASCII, just for fun.
+
         size_t height = img.getHeight();
         size_t width  = img.getWidth();
         for ( size_t y = 0; y < height; ++y )

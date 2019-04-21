@@ -33,6 +33,7 @@ int main( int argc, char* argv[] )
         // here, but just to show it can be done :)
         imgLibrary testImg1(argv[1]);
         testImg1.grayScale();
+        testImg1.save("output1.jpeg");
 
 
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);

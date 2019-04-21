@@ -85,6 +85,8 @@ namespace marengo
             // Image(size_t, size_t, size_t) = delete;
             ~Image();
 
+            Image();
+
             // Will throw if file cannot be saved. If no
             // filename is supplied, writes to fileName supplied in load()
             // (if that was called, otherwise throws)

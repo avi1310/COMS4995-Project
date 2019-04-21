@@ -9,11 +9,13 @@
 using namespace std;
 #include <iostream>
 #include <map>
+#include <string>
 using namespace marengo::jpeg;
 
 class imgLibrary {
 
-    Image img(100, 100);
+    Image output;
+    Image img;
     size_t height;
     size_t width;
 
@@ -25,12 +27,17 @@ public:
     imgLibrary(char *filename) {
         Image imgOriginal(filename);
         this->img = imgOriginal;
+        this->output = imgOriginal;
         this->height = img.getHeight();
         this->width  = img.getWidth();
     }
 
     ~imgLibrary() {
 
+    }
+
+    void save(const std::string& fileName) {
+        output.save(fileName, 100);
     }
 
     void grayScale() {
@@ -46,9 +53,9 @@ public:
                  // for(auto &p: pixels) {
                      // cout<<(int)p<<' ';
 
-                 dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
-                 dup_g.m_bitmapData[y][x*3+1] = (int)img.getLuminance(x, y);
-                 dup_g.m_bitmapData[y][x*3+2] = (int)img.getLuminance(x, y);
+                 output.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
+                 output.m_bitmapData[y][x*3+1] = (int)img.getLuminance(x, y);
+                 output.m_bitmapData[y][x*3+2] = (int)img.getLuminance(x, y);
                  // dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
                      // i++;
                      // pp.push_back(2*int(p));
@@ -59,8 +66,8 @@ public:
              }
              // std::cout << "\n";
          }
-         img.save("output_grayscale.jpeg", 100);
     }
+
 };
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

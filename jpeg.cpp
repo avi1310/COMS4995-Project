@@ -51,6 +51,19 @@ Image::Image(const size_t x, const size_t y, const size_t pixelSize, const int c
 
 }
 
+Image::Image() {
+    m_errorMgr = std::make_shared<::jpeg_error_mgr>();
+    // Note this usage of a lambda to provide our own error handler
+    // to libjpeg. If we do not supply a handler, and libjpeg hits
+    // a problem, it just prints the error message and calls exit().
+    m_errorMgr->error_exit = [](::j_common_ptr cinfo){
+        char jpegLastErrorMsg[JMSG_LENGTH_MAX];
+        // Call the function pointer to get the error message
+        (*(cinfo->err->format_message))(cinfo, jpegLastErrorMsg);
+        throw std::runtime_error(jpegLastErrorMsg);
+    };
+}
+
 Image::Image( const std::string& fileName )
 {
     // Creating a custom deleter for the decompressInfo pointer

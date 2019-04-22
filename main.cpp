@@ -38,8 +38,10 @@ int main( int argc, char* argv[] )
 //        testImg1.save("flip.jpeg");
         testImg1.flipVertical();
         testImg1.save("fVert.jpeg");
-        testImg1.blur();
-        testImg1.save("blur.jpeg");
+//        testImg1.blur();
+//        testImg1.save("blur.jpeg");
+        testImg1.resize(400);
+        testImg1.save("resized.jpeg");
 
 
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);
@@ -138,60 +140,6 @@ int main( int argc, char* argv[] )
 
 /////////////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////////////////
-
-// blur image
-        Image blur_img( argv[1] );
-        Image orig_img( argv[1] );
-        Image orig_m = orig_img;
-        Image blur = blur_img;
-
-        height = blur_img.getHeight();
-        width = blur_img.getWidth();
-
-        // float kernel[3][3] = {
-        //     {1/9.0, 1/9.0, 1/9.0},
-        //     {1/9.0, 1/9.0, 1/9.0},
-        //     {1/9.0, 1/9.0, 1/9.0},
-        // };
-        // float kernel[3][3] = {
-        //     {0, 1, 0},
-        //     {1, -4, 1},
-        //     {0, 1, 0},
-        // };
-        // for(size_t y = 0; y < height; y++) {
-        //     for(size_t x = 0; x < width; x++) {
-        //        // auto pixels = blur.getPixel(x, y);
-        //         blur.m_bitmapData[y][x*3] = 0.0;
-        //         blur.m_bitmapData[y][x*3 + 1] = 0.0;
-        //         blur.m_bitmapData[y][x*3 + 2] = 0.0;
-        //     }
-        // }
-        // cout<<"Reached here"<<endl;
-        // for(size_t y=1; y < height-1; y++) {
-        //     for(size_t x = 1; x < width-1; x++) {
-        //         float sum[3] = {0.0, 0.0, 0.0};
-        //         for(int k = -1; k <= 1; k++) {
-        //             for(int j = -1; j <= 1; j++) {
-        //                 // cout<<"Now"<<x<<' '<<y<<endl;
-        //                 auto pixels = orig_m.getPixel(x - k, y - j);
-        //                 int i=0;
-        //                 for(auto &p: pixels) {
-        //                     sum[i] = sum[i] + kernel[j+1][k+1]*p;
-        //                     i++;
-        //                 }
-        //             }
-        //         }
-        //         blur_img.m_bitmapData[y][x*3] = sum[0];
-        //         blur_img.m_bitmapData[y][x*3 + 1] = sum[1];
-        //         blur_img.m_bitmapData[y][x*3 + 2] = sum[2];
-        //     }
-        // }
-
-        // blur_img.save("edge.jpeg", 100);
-
-
-//////////////////////////////////////////////////////
         // expand and resize
         Image exp_img(argv[1]);
         Image exp_i = exp_img;

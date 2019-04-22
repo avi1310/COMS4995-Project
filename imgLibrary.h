@@ -162,6 +162,11 @@ public:
          }
     }
 
+    void resize(int newWidth) {
+        img = output;
+        output.resize(newWidth);
+    }
+
 };
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

@@ -34,6 +34,8 @@ int main( int argc, char* argv[] )
         imgLibrary testImg1(argv[1]);
         testImg1.grayScale();
         testImg1.save("output1.jpeg");
+        testImg1.flipHorizontal();
+        testImg1.save("flip.jpeg");
 
 
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);
@@ -89,38 +91,7 @@ int main( int argc, char* argv[] )
 //             // std::cout << "\n";
 //         }
 //         dupImg.save("output.jpeg", 100);
-//////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////
-        Image dup_gray( argv[1] );
-        Image dup_g = dup_gray;
-        /** Dup grayscale **/
-//         for ( size_t y = 0; y < height; ++y )
-//         {
-//             for ( size_t x = 0; x < width; ++x )
-//             {
-//                 // uint8_t luma = img.getLuminance( x, y );
-//                 // display( luma );
-//                 vector<uint8_t> p2;
-//                 vector<uint8_t> pixels = img.getPixel( x, y);
-//                 // int i = 0;
-//                 // for(auto &p: pixels) {
-//                     // cout<<(int)p<<' ';
-//
-//                 dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
-//                 dup_g.m_bitmapData[y][x*3+1] = (int)img.getLuminance(x, y);
-//                 dup_g.m_bitmapData[y][x*3+2] = (int)img.getLuminance(x, y);
-//                 // dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
-//                     // i++;
-//                     // pp.push_back(2*int(p));
-//                     // p2.push_back(2*int(p));
-//                 // }
-//                 // dupImg.m_bitmapData[y][x] = pp;
-//                 // cout<<'\n';
-//             }
-//             // std::cout << "\n";
-//         }
-//         dup_g.save("output_grayscale.jpeg", 100);
 /////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////

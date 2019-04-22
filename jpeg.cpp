@@ -216,12 +216,12 @@ void Image::savePpm( const std::string& fileName ) const
 
 std::vector<uint8_t> Image::getPixel( size_t x, size_t y ) const
 {
-    if (y >= m_bitmapData.size()){
-        throw std::out_of_range( "Y value too large" );
-    }
-    if (x >= m_bitmapData[0].size() / m_pixelSize){
-        throw std::out_of_range( "X value too large" );
-    }
+//    if (y >= m_bitmapData.size()){
+//        throw std::out_of_range( "Y value too large" );
+//    }
+//    if (x >= m_bitmapData[0].size() / m_pixelSize){
+//        throw std::out_of_range( "X value too large" );
+//    }
     std::vector<uint8_t> vec;
     for (size_t n = 0; n < m_pixelSize; ++n){
         vec.push_back( m_bitmapData[ y ][ x * m_pixelSize + n ] );

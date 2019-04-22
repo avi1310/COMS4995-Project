@@ -41,6 +41,7 @@ public:
     }
 
     void grayScale() {
+        img = output;
         for ( size_t y = 0; y < height; ++y )
          {
              for ( size_t x = 0; x < width; ++x )
@@ -65,6 +66,30 @@ public:
                  // cout<<'\n';
              }
              // std::cout << "\n";
+         }
+    }
+    //Need to check error with setPixel;
+    void flipHorizontal() {
+        img = output;
+         for(size_t y = 0; y < height; ++y) {
+             for(size_t x = 0; x < width/2; ++x) {
+                 // cout<<"Here = "<<x<<" "<<y<<endl;
+//                 cout<<x<<"  "<<width - x<<endl;
+                 auto pixels_l = output.getPixel(x, y);
+                 auto pixels_r = output.getPixel(width - x, y);
+                 // auto pixels_r = dup_f.getPixel(x, y);
+
+                 int i = 0;
+                 for(auto &p: pixels_r) {
+                     output.m_bitmapData[y][x*3 + i] = (int)p;
+                     i++;
+                 }
+                 i = 0;
+                 for(auto &p: pixels_l) {
+                     output.m_bitmapData[y][(width - x)*3 + i] = (int)p;
+                     i++;
+                 }
+             }
          }
     }
 

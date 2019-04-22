@@ -122,16 +122,16 @@ public:
 
     void blur() {
         img = output;
-//         float kernel[3][3] = {
-//             {1/9.0, 1/9.0, 1/9.0},
-//             {1/9.0, 1/9.0, 1/9.0},
-//             {1/9.0, 1/9.0, 1/9.0},
-//         };
          float kernel[3][3] = {
-             {0, 1, 0},
-             {1, -4, 1},
-             {0, 1, 0},
+             {1/9.0, 1/9.0, 1/9.0},
+             {1/9.0, 1/9.0, 1/9.0},
+             {1/9.0, 1/9.0, 1/9.0},
          };
+//         float kernel[3][3] = {
+//             {0, 1, 0},
+//             {1, -4, 1},
+//             {0, 1, 0},
+//         };
          for(size_t y = 0; y < height; y++) {
              for(size_t x = 0; x < width; x++) {
                 // auto pixels = blur.getPixel(x, y);
@@ -165,6 +165,65 @@ public:
     void resize(int newWidth) {
         img = output;
         output.resize(newWidth);
+    }
+
+    void edgeDetection() {
+        // Edge detection
+        img = output;
+
+//         float kernel[3][3] = {
+//             {-1, -1, -1},
+//             {-1, 8, -1},
+//             {-1, -1, -1},
+//         };
+//         float kernel[3][3] = {
+//             {-1, -1, -1},
+//             {2, 2, 2},
+//             {-1, -1, -1},
+//         };
+//
+//         float kernel[3][3] = {
+//             {-1, 2, -1},
+//             {-1, 2, -1},
+//             {-1, 2, -1},
+//         };
+
+         float kernel[3][3] = {
+             {-1, -1, 2},
+             {-1, 2, -1},
+             {2, -1, -1},
+         };
+
+         for(size_t y = 0; y < height; y++) {
+             for(size_t x = 0; x < width; x++) {
+                // auto pixels = blur.getPixel(x, y);
+                 output.m_bitmapData[y][x*3] = 0.0;
+                 output.m_bitmapData[y][x*3 + 1] = 0.0;
+                 output.m_bitmapData[y][x*3 + 2] = 0.0;
+             }
+         }
+
+         for(size_t y = 1; y < height-1; y++) {
+             for(size_t x = 1; x < width-1; x++) {
+                 // float sum[3] = {0.0, 0.0, 0.0};
+                 float sum = 0.0;
+                 for(int k = -1; k <= 1; k++) {
+                     for(int j = -1; j <= 1; j++) {
+                         // cout<<"Now"<<x<<' '<<y<<endl;
+                         auto pixels = img.getPixel(x - k, y - j);
+                         // int i=0;
+                         for(auto &p: pixels) {
+                             // sum[i] = sum[i] + kernel[j+1][k+1]*p;
+                             // i++;
+                             sum = sum + kernel[j+1][k+1]*p;
+                         }
+                     }
+                 }
+                 output.m_bitmapData[y][x*3] = sum;
+                 output.m_bitmapData[y][x*3 + 1] = sum;
+                 output.m_bitmapData[y][x*3 + 2] = sum;
+             }
+         }
     }
 
 };

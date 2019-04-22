@@ -36,12 +36,14 @@ int main( int argc, char* argv[] )
 //        testImg1.save("output1.jpeg");
 //        testImg1.flipHorizontal();
 //        testImg1.save("flip.jpeg");
-        testImg1.flipVertical();
-        testImg1.save("fVert.jpeg");
+//        testImg1.flipVertical();
+//        testImg1.save("fVert.jpeg");
 //        testImg1.blur();
 //        testImg1.save("blur.jpeg");
-        testImg1.resize(400);
-        testImg1.save("resized.jpeg");
+//        testImg1.resize(400);
+//        testImg1.save("resized.jpeg");
+        testImg1.edgeDetection();
+        testImg1.save("edgeDetection.jpeg");
 
 
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);
@@ -138,18 +140,6 @@ int main( int argc, char* argv[] )
         // }
         // ran_img.save("random_design.jpeg", 100);
 
-/////////////////////////////////////////////////////////////////////////
-
-        // expand and resize
-        Image exp_img(argv[1]);
-        Image exp_i = exp_img;
-        // int n;
-        // cout<<"Enter new width"<<endl;
-        // cin>>n;
-        // exp_i.resize(n);
-        // exp_i.save("small_image.jpeg", 100);
-
-///////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////
         // Crop
@@ -439,22 +429,22 @@ int main( int argc, char* argv[] )
 
 
 /////////////////////////////////////////////////////////////
-        Image trialguy(1920,1080);
-        for(size_t i=0; i<trialguy.getWidth(); i++){
-            for(size_t j=0;j<trialguy.getHeight();j++){
-                std::vector<uint8_t> temp {255, 100, 100};
-                trialguy.setPixel(i,j,temp);
-            }
-        }
-        trialguy.save("Trial.jpeg", 100);
-
-        std::cout << "\nImage height: " << img.getHeight();
-        std::cout << "\nImage width : " << img.getWidth();
-        // Pixel "Size" is 3 bytes for colour images (i.e. R,G, & B)
-        // and 1 byte for monochrome.
-        std::cout << "\nImage px sz : " << img.getPixelSize();
-        std::cout << std::endl;
-        return 0;
+//        Image trialguy(1920,1080);
+//        for(size_t i=0; i<trialguy.getWidth(); i++){
+//            for(size_t j=0;j<trialguy.getHeight();j++){
+//                std::vector<uint8_t> temp {255, 100, 100};
+//                trialguy.setPixel(i,j,temp);
+//            }
+//        }
+//        trialguy.save("Trial.jpeg", 100);
+//
+//        std::cout << "\nImage height: " << img.getHeight();
+//        std::cout << "\nImage width : " << img.getWidth();
+//        // Pixel "Size" is 3 bytes for colour images (i.e. R,G, & B)
+//        // and 1 byte for monochrome.
+//        std::cout << "\nImage px sz : " << img.getPixelSize();
+//        std::cout << std::endl;
+//        return 0;
     }
     catch( const std::exception& e )
     {

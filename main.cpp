@@ -32,12 +32,14 @@ int main( int argc, char* argv[] )
         // shrink non-destructively. Not really necessary
         // here, but just to show it can be done :)
         imgLibrary testImg1(argv[1]);
-        testImg1.grayScale();
-        testImg1.save("output1.jpeg");
-        testImg1.flipHorizontal();
-        testImg1.save("flip.jpeg");
+//        testImg1.grayScale();
+//        testImg1.save("output1.jpeg");
+//        testImg1.flipHorizontal();
+//        testImg1.save("flip.jpeg");
         testImg1.flipVertical();
         testImg1.save("fVert.jpeg");
+        testImg1.blur();
+        testImg1.save("blur.jpeg");
 
 
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);

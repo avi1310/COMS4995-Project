@@ -36,6 +36,8 @@ int main( int argc, char* argv[] )
         testImg1.save("output1.jpeg");
         testImg1.flipHorizontal();
         testImg1.save("flip.jpeg");
+        testImg1.flipVertical();
+        testImg1.save("fVert.jpeg");
 
 
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);
@@ -94,76 +96,7 @@ int main( int argc, char* argv[] )
 
 /////////////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////////////////
-        Image dup_flip( argv[1] );  // horizontally
-        Image dup_f = dup_flip;
-        height = dup_f.getHeight();
-        width = dup_f.getWidth();
-        cout<<height<<' '<<width<<endl;
-        auto test2 = dup_f.getPixel(500, 0);
-        cout<<test2.size()<<endl;
-        // for(size_t y = 0; y < height; ++y) {
-        //     for(size_t x = 0; x < width/2; ++x) {
-        //         // cout<<"Here = "<<x<<" "<<y<<endl;
-        //         cout<<x<<"  "<<width - x<<endl;
-        //         auto pixels_l = dup_f.getPixel(x, y);
-        //         auto pixels_r = dup_f.getPixel(width - x, y);
-        //         // auto pixels_r = dup_f.getPixel(x, y);
-                
-        //         int i = 0;
-        //         for(auto &p: pixels_r) {
-        //             dup_f.m_bitmapData[y][x*3 + i] = (int)p;
-        //             i++;
-        //         }
-        //         i = 0;
-        //         for(auto &p: pixels_l) {
-        //             dup_f.m_bitmapData[y][(width - x)*3 + i] = (int)p;
-        //             i++;
-        //         }
-        //     }
-        // }
-        // dup_f.save("horizontal_flip_output.jpeg", 100);
-/////////////////////////////////////////////////////////////////////////
 
-
-/////////////////////////////////////////////////////////////////////////
-        Image dup_flip_h( argv[1] );  // vertically
-        Image dup_f_h = dup_flip_h;
-        height = dup_f_h.getHeight();
-        width = dup_f_h.getWidth();
-        // cout<<height<<" ewffewf "<<width<<endl;
-        // auto test = dup_f_h.getPixel(0, 374);
-        // cout<<test.size()<<endl;
-        // cout<<"hfefef"<<endl;
-        // for(size_t y = 0; y < height/2; ++y) {
-        //     for(size_t x = 0; x < width; ++x) {
-        //         // cout<<"Here = "<<y<<" "<<height - y<<endl;
-        //         // cout<<x<<"  "<<width - x<<endl;
-        //         // cout<<"1"<<endl;
-        //         auto pixels_u = dup_f_h.getPixel(x, y);
-        //         // cout<<"2"<<endl;
-        //         auto pixels_d = dup_f_h.getPixel(x, height - y - 1);
-        //         cout<<pixels_d.size()<<endl;
-        //         // auto pixels_r = dup_f.getPixel(x, y);
-        //         // cout<<"Yes";
-        //         int i = 0;
-        //         for(auto &p: pixels_d) {
-        //             dup_f_h.m_bitmapData[y][x*3 + i] = (int)p;
-        //             i++;
-        //         }
-        //         i = 0;
-        //         for(auto &p: pixels_u) {
-        //             dup_f_h.m_bitmapData[height - y - 1][x*3 + i] = (int)p;
-        //             i++;
-        //         }
-        //     }
-        // }
-
-        // dup_f_h.save("vertical_mirror.jpeg", 100);
-//////////////////////////////////////////////////////////////////////////
-
-
-/////////////////////////////////////////////////////////////////////////
         // random design image
         // Image ran_img( argv[1] );
         // Image ran = ran_img;

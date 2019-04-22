@@ -68,7 +68,7 @@ public:
              // std::cout << "\n";
          }
     }
-    //Need to check error with setPixel;
+    //Need to check error with setPixel which is commented out;
     void flipHorizontal() {
         img = output;
          for(size_t y = 0; y < height; ++y) {
@@ -87,6 +87,33 @@ public:
                  i = 0;
                  for(auto &p: pixels_l) {
                      output.m_bitmapData[y][(width - x)*3 + i] = (int)p;
+                     i++;
+                 }
+             }
+         }
+    }
+
+    void flipVertical() {
+        img = output;
+         for(size_t y = 0; y < height/2; ++y) {
+             for(size_t x = 0; x < width; ++x) {
+                 // cout<<"Here = "<<y<<" "<<height - y<<endl;
+                 // cout<<x<<"  "<<width - x<<endl;
+                 // cout<<"1"<<endl;
+                 auto pixels_u = output.getPixel(x, y);
+                 // cout<<"2"<<endl;
+                 auto pixels_d = output.getPixel(x, height - y - 1);
+                 //cout<<pixels_d.size()<<endl;
+                 // auto pixels_r = dup_f.getPixel(x, y);
+                 // cout<<"Yes";
+                 int i = 0;
+                 for(auto &p: pixels_d) {
+                     output.m_bitmapData[y][x*3 + i] = (int)p;
+                     i++;
+                 }
+                 i = 0;
+                 for(auto &p: pixels_u) {
+                     output.m_bitmapData[height - y - 1][x*3 + i] = (int)p;
                      i++;
                  }
              }

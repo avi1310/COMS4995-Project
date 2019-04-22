@@ -167,6 +167,7 @@ public:
         output.resize(newWidth);
     }
 
+    //Check Output
     void edgeDetection() {
         // Edge detection
         img = output;
@@ -222,6 +223,24 @@ public:
                  output.m_bitmapData[y][x*3] = sum;
                  output.m_bitmapData[y][x*3 + 1] = sum;
                  output.m_bitmapData[y][x*3 + 2] = sum;
+             }
+         }
+    }
+
+    void luminanceScaling(int factor) {
+        // Luminance Modification
+
+        img = output;
+
+         for(size_t y = 0; y < height; y++) {
+             for(size_t x = 0; x < width; x++) {
+                 auto pixels = output.getPixel(x, y);
+                 uint8_t a = (pixels[0] * 2)*factor/6;
+                 uint8_t b = (pixels[1] * 3)*factor/6;
+                 uint8_t c = (pixels[2])*factor/6;
+                 output.m_bitmapData[y][x*3] = a;
+                 output.m_bitmapData[y][x*3 + 1] = b;
+                 output.m_bitmapData[y][x*3 + 2] = c;
              }
          }
     }

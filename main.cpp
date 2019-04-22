@@ -42,8 +42,10 @@ int main( int argc, char* argv[] )
 //        testImg1.save("blur.jpeg");
 //        testImg1.resize(400);
 //        testImg1.save("resized.jpeg");
-        testImg1.edgeDetection();
-        testImg1.save("edgeDetection.jpeg");
+//        testImg1.edgeDetection();
+//        testImg1.save("edgeDetection.jpeg");
+          testImg1.luminanceScaling(2);
+          testImg1.save("luminanceScaling.jpeg");
 
 
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);

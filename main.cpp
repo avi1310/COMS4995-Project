@@ -41,8 +41,8 @@ int main( int argc, char* argv[] )
 //       testImg1.resize(400);
 //        testImg1.save("resized.jpeg");
 
-        testImg1.cropImage(200, 500, 200, 200);
-        testImg1.save("crop.jpeg");
+        testImg1.masking(200, 500, 200, 200);
+        testImg1.save("mask.jpeg");
         testImg1.grayScale();
         testImg1.save("output1.jpeg");
 //        testImg1.edgeDetection();
@@ -146,49 +146,6 @@ int main( int argc, char* argv[] )
         // ran_img.save("random_design.jpeg", 100);
 
 
-////////////////////////////////////////////////////////
-        // Crop
-//        Image to_crop( argv[1] );
-//        Image t = to_crop;
-//
-//         int xOffset = 100, yOffset = 100, xWidth = 200, yWidth = 200;
-//
-//         for(size_t y = 0; y < height; y++) {
-//             for(size_t x = 0; x < width; x++) {
-//                 if((int)x < xOffset || (int)x > (xWidth + xOffset)) { // crop
-//                     // pixels = t.getPixel(x, y);
-//                     int i = 0;
-//                     for(; i < 3; i++) {
-//                         t.m_bitmapData[y][x*3 + i] = 255;
-//                     }
-//                 }
-//                 if((int)y < yOffset || (int)y > (yWidth + yOffset)) { // crop
-//                     // pixels = t.getPixel(x, y);
-//                     int i = 0;
-//                     for(; i < 3; i++) {
-//                         t.m_bitmapData[y][x*3 + i] = 255;
-//                     }
-////                 }
-////             }
-////         }
-//        Image temp(width, height);
-//        Image trialguy(1920,1080);
-//        for(size_t i=xOffset; i<xOffset+width; i++){
-//            for(size_t j=yOffset;j<yOffset+height;j++){
-//                temp.setPixel(i, j, output.getPixel(i,j));
-//            }
-//        }
-//        temp.save("cropped.jpeg", 100);
-//
-//        std::cout << "\nImage height: " << img.getHeight();
-//        std::cout << "\nImage width : " << img.getWidth();
-//        // Pixel "Size" is 3 bytes for colour images (i.e. R,G, & B)
-//        // and 1 byte for monochrome.
-//        std::cout << "\nImage px sz : " << img.getPixelSize();
-
-//         t.save("Cropped.jpeg", 100);
-
-//////////////////////////////////////////////////////////////
 // Masking
         Image to_mask( argv[1] );
         Image t_m = to_mask;

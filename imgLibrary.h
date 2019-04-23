@@ -251,6 +251,21 @@ public:
         width = output.getWidth();
     }
 
+    void masking(int xOffset, int yOffset, int xWidth, int yWidth) {
+        // Masking
+
+         for(size_t y = 0; y < height; y++) {
+             for(size_t x = 0; x < width; x++) {
+                 if((int)y >= yOffset && (int)y <= (yWidth + yOffset) && (int)x >= xOffset && (int)x <= (xWidth + xOffset)) { // mask
+                     int i = 0;
+                     for(; i < 3; i++) {
+                         output.m_bitmapData[y][x*3 + i] &= 0x00;
+                     }
+                 }
+             }
+         }
+    }
+
 };
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

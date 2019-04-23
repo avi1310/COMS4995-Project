@@ -40,15 +40,20 @@ int main( int argc, char* argv[] )
 //        testImg1.save("blur.jpeg");
 //       testImg1.resize(400);
 //        testImg1.save("resized.jpeg");
-
-        testImg1.masking(200, 500, 200, 200);
-        testImg1.save("mask.jpeg");
-        testImg1.contrastMod(2.3);
-        testImg1.save("contrast.jpeg");
-        testImg1.brightnessMod(20);
-        testImg1.save("brightness.jpeg");
-        testImg1.grayScale();
+//
+//        testImg1.masking(200, 500, 200, 200);
+//        testImg1.save("mask.jpeg");
+//        testImg1.contrastMod(2.3);
+//        testImg1.save("contrast.jpeg");
+//        testImg1.brightnessMod(20);
+//        testImg1.save("brightness.jpeg");
+//        testImg1.grayScale();
+          testImg1.rotateAntiClockwise();
+          testImg1.rotateClockwise();
+          testImg1.rotate180();
+          testImg1.rotate180();
         testImg1.save("output1.jpeg");
+
 
 //        testImg1.edgeDetection();
 //        testImg1.save("edgeDetection.jpeg");
@@ -153,105 +158,7 @@ int main( int argc, char* argv[] )
 /////////////////////////////////////////////////////////
 // Brightness and Contrast Modification
         // https://docs.opencv.org/3.4/d3/dc1/tutorial_basic_linear_transform.html
-        Image bc_image(argv[1]);
-        Image origImg(argv[1]);
-        Image bc_i = bc_image;
 
-        // double alpha = 2.3; // to control contrast
-        // double beta = 20; // to control brightness
-
-        // // transformation, f(i, j) = alpha*g(i,j) + beta
-        // for(size_t y = 0; y < height; y++) {
-        //     for(size_t x = 0; x < width; x++) {
-        //         // auto pixels = origImg.getPixel(x, y);
-        //         int i = 0;
-        //         for(; i < 3;) {
-        //             int val = (int)(alpha*origImg.m_bitmapData[y][x*3 + i] + beta);
-        //             if(val > 255) {
-        //                 val = 255;
-        //             }
-        //             bc_i.m_bitmapData[y][x*3 + i] = val;
-        //             i++;
-        //         }
-        //     }
-        // }
-        // bc_i.save("brightness_and_contrast.jpeg", 100);
-
-
-
-
-//////////////////////////////////////////////////////////
-
-        // Rotate CCW
-        // Image orig_r(argv[1]);
-        // Image new_r(argv[1]);
-        // Image o_r = orig_r;
-        // Image n_r = new_r;
-
-        // // or = 375 h, 500 w
-        // // nr = 500 h, 375 w
-        // n_r.m_width = o_r.m_height;
-        // n_r.m_height = o_r.m_width;
-
-        // n_r.m_bitmapData.resize(n_r.m_height);
-        // for(int i = 0; i < (int)n_r.m_height; i++) {
-        //     n_r.m_bitmapData[i].resize(n_r.m_width*3);
-        // }
-        // for(size_t y = 0; y < o_r.m_height; y++) {
-        //     for(size_t x = 0; x < o_r.m_width; x++) {
-        //         n_r.setPixel(y, x, o_r.getPixel(o_r.m_width - 1 - x, y));
-        //     }
-        // }
-        // n_r.save("rotate90.jpeg", 100);
-
-/////////////////////////////////////////////////////////
-        // Rotate CW
-        // Image orig_r(argv[1]);
-        // Image new_r(argv[1]);
-        // Image o_r = orig_r;
-        // Image n_r = new_r;
-
-        // // or = 375 h, 500 w
-        // // nr = 500 h, 375 w
-        // n_r.m_width = o_r.m_height;
-        // n_r.m_height = o_r.m_width;
-
-        // n_r.m_bitmapData.resize(n_r.m_height);
-        // for(int i = 0; i < (int)n_r.m_height; i++) {
-        //     n_r.m_bitmapData[i].resize(n_r.m_width*3);
-        // }
-        // for(int y = (int)o_r.m_height - 1; y>=0 ; y--) {
-        //     for(size_t x = 0; x < o_r.m_width; x++) {
-        //         cout<<x<<' '<<y<<endl;
-        //         n_r.setPixel(y, x, o_r.getPixel(x, o_r.m_height - 1 - y));
-        //     }
-        // }
-        // n_r.save("rotate90_2.jpeg", 100);
-
-///////////////////////////////////////////////////////////
-        // Rotate 180
-
-        Image orig_r(argv[1]);
-        Image new_r(argv[1]);
-        Image o_r = orig_r;
-        Image n_r = new_r;
-
-        // or = 375 h, 500 w
-        // nr = 500 h, 375 w
-        // n_r.m_width = o_r.m_height;
-        // n_r.m_height = o_r.m_width;
-
-        // n_r.m_bitmapData.resize(n_r.m_height);
-        // for(int i = 0; i < (int)n_r.m_height; i++) {
-        //     n_r.m_bitmapData[i].resize(n_r.m_width*3);
-        // }
-        // for(size_t y = 0; y < o_r.m_height ; y++) {
-        //     for(size_t x = 0; x < o_r.m_width; x++) {
-        //         // cout<<x<<' '<<y<<endl;
-        //         n_r.setPixel(o_r.m_width - 1 - x, o_r.m_height - 1 - y, o_r.getPixel(x, y));
-        //     }
-        // }
-        // n_r.save("rotate180.jpeg", 100);
 
 ////////////////////////////////////////////////////////////////
 

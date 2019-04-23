@@ -302,6 +302,72 @@ public:
         }
     }
 
+    void rotateAntiClockwise() {
+        // Rotate CCW
+         Image img = output;
+
+         // or = 375 h, 500 w
+         // nr = 500 h, 375 w
+         output.m_width = img.m_height;
+         output.m_height = img.m_width;
+
+         output.m_bitmapData.resize(output.m_height);
+         for(int i = 0; i < (int)output.m_height; i++) {
+             output.m_bitmapData[i].resize(output.m_width*3);
+         }
+         for(size_t y = 0; y < img.m_height; y++) {
+             for(size_t x = 0; x < img.m_width; x++) {
+                 output.setPixel(y, x, img.getPixel(img.m_width - 1 - x, y));
+             }
+         }
+
+         height = output.getHeight();
+         width = output.getWidth();
+        // n_r.save("rotate90.jpeg", 100);
+    }
+
+    void rotateClockwise() {
+        // Rotate CW
+        Image img = output;
+
+        // // or = 375 h, 500 w
+        // // nr = 500 h, 375 w
+         output.m_width = img.m_height;
+         output.m_height = img.m_width;
+
+         output.m_bitmapData.resize(output.m_height);
+         for(int i = 0; i < (int)output.m_height; i++) {
+             output.m_bitmapData[i].resize(output.m_width*3);
+         }
+         for(int y = (int)img.m_height - 1; y>=0 ; y--) {
+             for(size_t x = 0; x < img.m_width; x++) {
+//                 cout<<x<<' '<<y<<endl;
+                 output.setPixel(y, x, img.getPixel(x, img.m_height - 1 - y));
+             }
+         }
+
+        height = output.getHeight();
+        width = output.getWidth();
+        // n_r.save("rotate90_2.jpeg", 100);
+    }
+
+    void rotate180() {
+        Image img = output;
+
+        // or = 375 h, 500 w
+        // nr = 500 h, 375 w
+
+         for(int i = 0; i < (int)output.m_height; i++) {
+             output.m_bitmapData[i].resize(output.m_width*3);
+         }
+         for(size_t y = 0; y < img.m_height ; y++) {
+             for(size_t x = 0; x < img.m_width; x++) {
+                 // cout<<x<<' '<<y<<endl;
+                 output.setPixel(img.m_width - 1 - x, img.m_height - 1 - y, img.getPixel(x, y));
+             }
+         }
+    }
+
 };
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

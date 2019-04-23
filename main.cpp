@@ -43,8 +43,13 @@ int main( int argc, char* argv[] )
 
         testImg1.masking(200, 500, 200, 200);
         testImg1.save("mask.jpeg");
+        testImg1.contrastMod(2.3);
+        testImg1.save("contrast.jpeg");
+        testImg1.brightnessMod(20);
+        testImg1.save("brightness.jpeg");
         testImg1.grayScale();
         testImg1.save("output1.jpeg");
+
 //        testImg1.edgeDetection();
 //        testImg1.save("edgeDetection.jpeg");
 //          testImg1.luminanceScaling(2);
@@ -144,25 +149,6 @@ int main( int argc, char* argv[] )
         //     }
         // }
         // ran_img.save("random_design.jpeg", 100);
-
-
-// Masking
-        Image to_mask( argv[1] );
-        Image t_m = to_mask;
-        
-        // int xOffset = 100, yOffset = 100, xWidth = 200, yWidth = 200;
-
-        // for(size_t y = 0; y < height; y++) {
-        //     for(size_t x = 0; x < width; x++) {
-        //         if((int)y >= yOffset && (int)y <= (yWidth + yOffset) && (int)x >= xOffset && (int)x <= (xWidth + xOffset)) { // mask
-        //             int i = 0;
-        //             for(; i < 3; i++) {
-        //                 t.m_bitmapData[y][x*3 + i] &= 0x00;
-        //             }
-        //         }
-        //     }
-        // }
-        // t.save("Masked.jpeg", 100);
 
 /////////////////////////////////////////////////////////
 // Brightness and Contrast Modification

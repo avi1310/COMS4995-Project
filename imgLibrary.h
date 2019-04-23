@@ -266,6 +266,42 @@ public:
          }
     }
 
+    void brightnessMod(double beta) {
+        Image img = output;
+        for(size_t y = 0; y < height; y++) {
+             for(size_t x = 0; x < width; x++) {
+                 // auto pixels = origImg.getPixel(x, y);
+                 int i = 0;
+                 for(; i < 3;) {
+                     int val = (int)(img.m_bitmapData[y][x*3 + i] + beta);
+                     if(val > 255) {
+                         val = 255;
+                     }
+                     output.m_bitmapData[y][x*3 + i] = val;
+                     i++;
+                 }
+             }
+         }
+    }
+
+    void contrastMod(double alpha) {
+        Image img = output;
+        for(size_t y = 0; y < height; y++) {
+            for(size_t x = 0; x < width; x++) {
+                // auto pixels = origImg.getPixel(x, y);
+                int i = 0;
+                for(; i < 3;) {
+                    int val = (int)(alpha*img.m_bitmapData[y][x*3 + i]);
+                    if(val > 255) {
+                        val = 255;
+                    }
+                    output.m_bitmapData[y][x*3 + i] = val;
+                    i++;
+                }
+            }
+        }
+    }
+
 };
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

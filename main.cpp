@@ -16,7 +16,6 @@ void display( uint8_t luma )
 
 int main( int argc, char* argv[] )
 {
-
     if ( argc < 2 )
     {
         std::cout << "No jpeg file specified\n";
@@ -32,20 +31,24 @@ int main( int argc, char* argv[] )
         // shrink non-destructively. Not really necessary
         // here, but just to show it can be done :)
         imgLibrary testImg1(argv[1]);
-//        testImg1.grayScale();
-//        testImg1.save("output1.jpeg");
+
 //        testImg1.flipHorizontal();
 //        testImg1.save("flip.jpeg");
 //        testImg1.flipVertical();
 //        testImg1.save("fVert.jpeg");
 //        testImg1.blur();
 //        testImg1.save("blur.jpeg");
-//        testImg1.resize(400);
+//       testImg1.resize(400);
 //        testImg1.save("resized.jpeg");
+
+        testImg1.cropImage(200, 500, 200, 200);
+        testImg1.save("crop.jpeg");
+        testImg1.grayScale();
+        testImg1.save("output1.jpeg");
 //        testImg1.edgeDetection();
 //        testImg1.save("edgeDetection.jpeg");
-          testImg1.luminanceScaling(2);
-          testImg1.save("luminanceScaling.jpeg");
+//          testImg1.luminanceScaling(2);
+//          testImg1.save("luminanceScaling.jpeg");
 
 
         // Image dup_g = Image(img.m_height, img.m_width, img.m_pixelSize);
@@ -54,17 +57,17 @@ int main( int argc, char* argv[] )
         // dupImg.shrink(60);
 
         // Display the image in ASCII, just for fun.
-        size_t height = img.getHeight();
-        size_t width  = img.getWidth();
-        for ( size_t y = 0; y < height; ++y )
-        {
-            for ( size_t x = 0; x < width; ++x )
-            {
-                uint8_t luma = img.getLuminance( x, y );
-                display( luma );
-            }
-            std::cout << "\n";
-        }
+//        size_t height = img.getHeight();
+//        size_t width  = img.getWidth();
+//        for ( size_t y = 0; y < height; ++y )
+//        {
+//            for ( size_t x = 0; x < width; ++x )
+//            {
+//                uint8_t luma = img.getLuminance( x, y );
+//                display( luma );
+//            }
+//            std::cout << "\n";
+//        }
 
         // cout<<"Bitmap data is as follows"<<endl;
         // for(size_t y = 0; y < height; y++) {
@@ -145,30 +148,45 @@ int main( int argc, char* argv[] )
 
 ////////////////////////////////////////////////////////
         // Crop
-        Image to_crop( argv[1] );
-        Image t = to_crop;
-        
-        // int xOffset = 100, yOffset = 100, xWidth = 200, yWidth = 200;
+//        Image to_crop( argv[1] );
+//        Image t = to_crop;
+//
+//         int xOffset = 100, yOffset = 100, xWidth = 200, yWidth = 200;
+//
+//         for(size_t y = 0; y < height; y++) {
+//             for(size_t x = 0; x < width; x++) {
+//                 if((int)x < xOffset || (int)x > (xWidth + xOffset)) { // crop
+//                     // pixels = t.getPixel(x, y);
+//                     int i = 0;
+//                     for(; i < 3; i++) {
+//                         t.m_bitmapData[y][x*3 + i] = 255;
+//                     }
+//                 }
+//                 if((int)y < yOffset || (int)y > (yWidth + yOffset)) { // crop
+//                     // pixels = t.getPixel(x, y);
+//                     int i = 0;
+//                     for(; i < 3; i++) {
+//                         t.m_bitmapData[y][x*3 + i] = 255;
+//                     }
+////                 }
+////             }
+////         }
+//        Image temp(width, height);
+//        Image trialguy(1920,1080);
+//        for(size_t i=xOffset; i<xOffset+width; i++){
+//            for(size_t j=yOffset;j<yOffset+height;j++){
+//                temp.setPixel(i, j, output.getPixel(i,j));
+//            }
+//        }
+//        temp.save("cropped.jpeg", 100);
+//
+//        std::cout << "\nImage height: " << img.getHeight();
+//        std::cout << "\nImage width : " << img.getWidth();
+//        // Pixel "Size" is 3 bytes for colour images (i.e. R,G, & B)
+//        // and 1 byte for monochrome.
+//        std::cout << "\nImage px sz : " << img.getPixelSize();
 
-        // for(size_t y = 0; y < height; y++) {
-        //     for(size_t x = 0; x < width; x++) {
-        //         if((int)x < xOffset || (int)x > (xWidth + xOffset)) { // crop
-        //             // pixels = t.getPixel(x, y);
-        //             int i = 0;
-        //             for(; i < 3; i++) {
-        //                 t.m_bitmapData[y][x*3 + i] = 255;
-        //             }
-        //         }
-        //         if((int)y < yOffset || (int)y > (yWidth + yOffset)) { // crop
-        //             // pixels = t.getPixel(x, y);
-        //             int i = 0;
-        //             for(; i < 3; i++) {
-        //                 t.m_bitmapData[y][x*3 + i] = 255;
-        //             }
-        //         }
-        //     }
-        // }
-        // t.save("Cropped.jpeg", 100);
+//         t.save("Cropped.jpeg", 100);
 
 //////////////////////////////////////////////////////////////
 // Masking
@@ -216,91 +234,8 @@ int main( int argc, char* argv[] )
         // }
         // bc_i.save("brightness_and_contrast.jpeg", 100);
 
-///////////////////////////////////////////////////////////////////
-    // Luminance Modification
-        Image lum_image(argv[1]);
-        Image lum_i = lum_image;
 
-        // cout<<"Enter Luminance factor. We will scale up by this value."<<endl;
-        // int lll;
-        // cin>>lll;
 
-        // for(size_t y = 0; y < height; y++) {
-        //     for(size_t x = 0; x < width; x++) {
-        //         auto pixels = lum_i.getPixel(x, y);
-        //         uint8_t a = (pixels[0] * 2)*lll/6;
-        //         uint8_t b = (pixels[1] * 3)*lll/6;
-        //         uint8_t c = (pixels[2])*lll/6;
-        //         lum_i.m_bitmapData[y][x*3] = a;
-        //         lum_i.m_bitmapData[y][x*3 + 1] = b;
-        //         lum_i.m_bitmapData[y][x*3 + 2] = c;
-        //     }
-        // }
-        // lum_i.save("luminance_modified.jpeg", 100);
-
-///////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////
-        // Edge detection
-        Image edge_dec( argv[1] );
-        Image edge = edge_dec;
-
-        // float kernel[3][3] = {
-        //     {-1, -1, -1},
-        //     {-1, 8, -1},
-        //     {-1, -1, -1},
-        // };
-        // float kernel[3][3] = {
-        //     {-1, -1, -1},
-        //     {2, 2, 2},
-        //     {-1, -1, -1},
-        // };
-
-        // float kernel[3][3] = {
-        //     {-1, 2, -1},
-        //     {-1, 2, -1},
-        //     {-1, 2, -1},
-        // };
-
-        // float kernel[3][3] = {
-        //     {-1, -1, 2},
-        //     {-1, 2, -1},
-        //     {2, -1, -1},
-        // };
-
-        // for(size_t y = 0; y < height; y++) {
-        //     for(size_t x = 0; x < width; x++) {
-        //        // auto pixels = blur.getPixel(x, y);
-        //         blur.m_bitmapData[y][x*3] = 0.0;
-        //         blur.m_bitmapData[y][x*3 + 1] = 0.0;
-        //         blur.m_bitmapData[y][x*3 + 2] = 0.0;
-        //     }
-        // }
-        // cout<<"Reached here"<<endl;
-        // for(size_t y = 1; y < height-1; y++) {
-        //     for(size_t x = 1; x < width-1; x++) {
-        //         // float sum[3] = {0.0, 0.0, 0.0};
-        //         float sum = 0.0;
-        //         for(int k = -1; k <= 1; k++) {
-        //             for(int j = -1; j <= 1; j++) {
-        //                 // cout<<"Now"<<x<<' '<<y<<endl;
-        //                 auto pixels = orig_m.getPixel(x - k, y - j);
-        //                 // int i=0;
-        //                 for(auto &p: pixels) {
-        //                     // sum[i] = sum[i] + kernel[j+1][k+1]*p;
-        //                     // i++;
-        //                     sum = sum + kernel[j+1][k+1]*p;
-        //                 }
-        //             }
-        //         }
-        //         blur_img.m_bitmapData[y][x*3] = sum;
-        //         blur_img.m_bitmapData[y][x*3 + 1] = sum;
-        //         blur_img.m_bitmapData[y][x*3 + 2] = sum;
-        //     }
-        // }
-
-        // blur_img.save("edge_2.jpeg", 100);
-//////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////
 
@@ -431,22 +366,22 @@ int main( int argc, char* argv[] )
 
 
 /////////////////////////////////////////////////////////////
-//        Image trialguy(1920,1080);
-//        for(size_t i=0; i<trialguy.getWidth(); i++){
-//            for(size_t j=0;j<trialguy.getHeight();j++){
-//                std::vector<uint8_t> temp {255, 100, 100};
-//                trialguy.setPixel(i,j,temp);
-//            }
-//        }
-//        trialguy.save("Trial.jpeg", 100);
-//
-//        std::cout << "\nImage height: " << img.getHeight();
-//        std::cout << "\nImage width : " << img.getWidth();
-//        // Pixel "Size" is 3 bytes for colour images (i.e. R,G, & B)
-//        // and 1 byte for monochrome.
-//        std::cout << "\nImage px sz : " << img.getPixelSize();
-//        std::cout << std::endl;
-//        return 0;
+        Image trialguy(1920,1080);
+        for(size_t i=0; i<trialguy.getWidth(); i++){
+            for(size_t j=0;j<trialguy.getHeight();j++){
+                std::vector<uint8_t> temp {255, 100, 100};
+                trialguy.setPixel(i,j,temp);
+            }
+        }
+        trialguy.save("Trial.jpeg", 100);
+
+        std::cout << "\nImage height: " << img.getHeight();
+        std::cout << "\nImage width : " << img.getWidth();
+        // Pixel "Size" is 3 bytes for colour images (i.e. R,G, & B)
+        // and 1 byte for monochrome.
+        std::cout << "\nImage px sz : " << img.getPixelSize();
+        std::cout << std::endl;
+        return 0;
     }
     catch( const std::exception& e )
     {

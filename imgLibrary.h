@@ -15,7 +15,6 @@ using namespace marengo::jpeg;
 class imgLibrary {
 
     Image output;
-    Image img;
     size_t height;
     size_t width;
 
@@ -26,10 +25,9 @@ public:
 
     imgLibrary(char *filename) {
         Image imgOriginal(filename);
-        this->img = imgOriginal;
         this->output = imgOriginal;
-        this->height = img.getHeight();
-        this->width  = img.getWidth();
+        this->height = output.getHeight();
+        this->width  = output.getWidth();
     }
 
     ~imgLibrary() {
@@ -41,7 +39,6 @@ public:
     }
 
     void grayScale() {
-        img = output;
         for ( size_t y = 0; y < height; ++y )
          {
              for ( size_t x = 0; x < width; ++x )
@@ -49,14 +46,14 @@ public:
                  // uint8_t luma = img.getLuminance( x, y );
                  // display( luma );
                  vector<uint8_t> p2;
-                 vector<uint8_t> pixels = img.getPixel( x, y);
+                 vector<uint8_t> pixels = output.getPixel( x, y);
                  // int i = 0;
                  // for(auto &p: pixels) {
                      // cout<<(int)p<<' ';
-
-                 output.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
-                 output.m_bitmapData[y][x*3+1] = (int)img.getLuminance(x, y);
-                 output.m_bitmapData[y][x*3+2] = (int)img.getLuminance(x, y);
+                 int luminance = (int)output.getLuminance(x, y);
+                 output.m_bitmapData[y][x*3] = luminance;
+                 output.m_bitmapData[y][x*3+1] = luminance;
+                 output.m_bitmapData[y][x*3+2] = luminance;
                  // dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
                      // i++;
                      // pp.push_back(2*int(p));
@@ -70,7 +67,6 @@ public:
     }
     //Need to check error with setPixel which is commented out;
     void flipHorizontal() {
-        img = output;
          for(size_t y = 0; y < height; ++y) {
              for(size_t x = 0; x < width/2; ++x) {
                  // cout<<"Here = "<<x<<" "<<y<<endl;
@@ -94,7 +90,6 @@ public:
     }
 
     void flipVertical() {
-        img = output;
          for(size_t y = 0; y < height/2; ++y) {
              for(size_t x = 0; x < width; ++x) {
                  // cout<<"Here = "<<y<<" "<<height - y<<endl;
@@ -121,7 +116,7 @@ public:
     }
 
     void blur() {
-        img = output;
+        Image img = output;
          float kernel[3][3] = {
              {1/9.0, 1/9.0, 1/9.0},
              {1/9.0, 1/9.0, 1/9.0},
@@ -163,14 +158,15 @@ public:
     }
 
     void resize(int newWidth) {
-        img = output;
         output.resize(newWidth);
+        height = output.getHeight();
+        width = output.getWidth();
     }
 
     //Check Output
     void edgeDetection() {
         // Edge detection
-        img = output;
+        Image img = output;
 
 //         float kernel[3][3] = {
 //             {-1, -1, -1},
@@ -230,8 +226,6 @@ public:
     void luminanceScaling(int factor) {
         // Luminance Modification
 
-        img = output;
-
          for(size_t y = 0; y < height; y++) {
              for(size_t x = 0; x < width; x++) {
                  auto pixels = output.getPixel(x, y);
@@ -243,6 +237,18 @@ public:
                  output.m_bitmapData[y][x*3 + 2] = c;
              }
          }
+    }
+
+    void cropImage(int xOffset, int yOffset, size_t widthCrop, size_t heightCrop) {
+        Image temp(widthCrop, heightCrop);
+        for(size_t i=xOffset, i1=0; i<xOffset+widthCrop; i++, i1++){
+            for(size_t j=yOffset, j1=0; j<yOffset+heightCrop; j++, j1++){
+                temp.setPixel(i1, j1, output.getPixel(i,j));
+            }
+        }
+        output = temp;
+        height = output.getHeight();
+        width = output.getWidth();
     }
 
 };

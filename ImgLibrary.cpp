@@ -64,11 +64,6 @@ ImgLibrary& ImgLibrary::blur() {
 //             {1, -4, 1},
 //             {0, 1, 0},
 //         };
-	// for(size_t y = 0; y < output.getHeight(); y++) {
-	// 	for(size_t x = 0; x < output.getWidth(); x++) {
-	// 		output.setPixel(x,y,{0,0,0});
-	// 	}
-	// }
 
 	for(size_t y=1; y < output.getHeight()-1; y++) {
 		for(size_t x = 1; x < output.getWidth()-1; x++) {
@@ -92,8 +87,6 @@ ImgLibrary& ImgLibrary::blur() {
 
 ImgLibrary& ImgLibrary::resize(int newWidth) {
 	output.resize(newWidth);
-	height = output.getHeight();
-	width = output.getWidth();
 
 	return *this;
 }
@@ -145,9 +138,6 @@ ImgLibrary& ImgLibrary::edgeDetection() {
 			}
 
 			output.setPixel(x, y, {uint8_t(sum), uint8_t(sum), uint8_t(sum)});
-			// output.m_bitmapData[y][x*3] = sum;
-			// output.m_bitmapData[y][x*3 + 1] = sum;
-			// output.m_bitmapData[y][x*3 + 2] = sum;
 		}
 	}
 
@@ -242,15 +232,6 @@ ImgLibrary& ImgLibrary::rotateAntiClockwise() {
 	// Rotate CCW
 	Image img(output.getHeight(), output.getWidth());
 
-	// or = 375 h, 500 w
-	// nr = 500 h, 375 w
-	// output.m_width = img.m_height;
-	// output.m_height = img.m_width;
-
-	// output.m_bitmapData.resize(output.m_height);
-	// for(int i = 0; i < (int)output.getHeight(); i++) {
-	// 	output.m_bitmapData[i].resize(output.m_width*3);
-	// }
 	for(size_t y = 0; y < output.getHeight(); y++) {
 		for(size_t x = 0; x < output.getWidth(); x++) {
 			img.setPixel(y, x, output.getPixel(output.getWidth() - 1 - x, y));
@@ -264,52 +245,36 @@ ImgLibrary& ImgLibrary::rotateAntiClockwise() {
 
 ImgLibrary& ImgLibrary::rotateClockwise() {
 	// Rotate CW
-	Image img = output;
+	Image img(output.getHeight(), output.getWidth());
 
-	// // or = 375 h, 500 w
-	// // nr = 500 h, 375 w
-	output.m_width = img.m_height;
-	output.m_height = img.m_width;
-
-	output.m_bitmapData.resize(output.m_height);
-	for(int i = 0; i < (int)output.m_height; i++) {
-		output.m_bitmapData[i].resize(output.m_width*3);
-	}
-	for(int y = (int)img.m_height - 1; y>=0 ; y--) {
-		for(size_t x = 0; x < img.m_width; x++) {
-//                 cout<<x<<' '<<y<<endl;
-			output.setPixel(y, x, img.getPixel(x, img.m_height - 1 - y));
+	//Use int here, cause size_t is unsigned and that's a pain to deal with when comparing with 0.
+	for(int y = int(output.getHeight() - 1); y >= 0 ; y--) {
+		for(size_t x = 0; x < output.getWidth(); x++) {
+			img.setPixel(y, x, output.getPixel(x, output.getHeight() - 1 - y));
 		}
 	}
 
-	height = output.getHeight();
-	width = output.getWidth();
-	// n_r.save("rotate90_2.jpeg", 100);
+	output = img;
 
 	return *this;
 }
 
 ImgLibrary& ImgLibrary::rotate180() {
-	Image img = output;
+	Image img(output.getWidth(), output.getHeight());
 
-	// or = 375 h, 500 w
-	// nr = 500 h, 375 w
-
-	for(int i = 0; i < (int)output.m_height; i++) {
-		output.m_bitmapData[i].resize(output.m_width*3);
-	}
-	for(size_t y = 0; y < img.m_height ; y++) {
-		for(size_t x = 0; x < img.m_width; x++) {
-			// cout<<x<<' '<<y<<endl;
-			output.setPixel(img.m_width - 1 - x, img.m_height - 1 - y, img.getPixel(x, y));
+	for(size_t y = 0; y < output.getHeight() ; y++) {
+		for(size_t x = 0; x < output.getWidth(); x++) {
+			img.setPixel(output.getWidth() - 1 - x, output.getHeight() - 1 - y, output.getPixel(x, y));
 		}
 	}
+
+	output = img;
 
 	return *this;
 }
 
 ImgLibrary& ImgLibrary::padding(int pad) {
-	for(size_t x = 0; x < height; x++) {
+	for(size_t x = 0; x < output.getWidth(); x++) {
 		for(int k = 0; k < 3*pad; k++) {
 			output.m_bitmapData[x].insert(output.m_bitmapData[x].begin(), 0);
 			output.m_bitmapData[x].push_back(0);
@@ -318,7 +283,7 @@ ImgLibrary& ImgLibrary::padding(int pad) {
 	output.m_width += 2*pad;
 	for(int k = 0; k < pad; k++) {
 		std::vector<uint8_t> v;
-		for(int i = 0; i < (int)output.m_width*3; i++) {
+		for(int i = 0; i < (int)output.getWidth()*3; i++) {
 			v.push_back(0);
 		}
 		output.m_bitmapData.insert(output.m_bitmapData.begin(), v);
@@ -334,13 +299,15 @@ ImgLibrary& ImgLibrary::padding(int pad) {
 
 ImgLibrary& ImgLibrary::invert() {
 	// Invert image
-	for(size_t y = 0; y < height; y++) {
-		for(size_t x = 0; x < width; x++) {
+	for(size_t y = 0; y < output.getHeight(); y++) {
+		for(size_t x = 0; x < output.getWidth(); x++) {
 			std::vector<uint8_t> pixels = output.getPixel(x, y);
-			int i = 0;
-			for(; i < 3; i++) {
-				output.m_bitmapData[y][x*3 + i] = ~output.m_bitmapData[y][x*3 + i];
+
+			for(uint8_t &p: pixels){
+				p = ~p;
 			}
+
+			output.setPixel(x,y,pixels);
 		}
 	}
 

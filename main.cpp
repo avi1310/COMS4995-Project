@@ -2,7 +2,7 @@
 using namespace std;
 #include <iostream>
 #include <map>
-#include "imgLibrary.h"
+#include "ImgLibrary.h"
 
 void display( uint8_t luma )
 {
@@ -30,7 +30,7 @@ int main( int argc, char* argv[] )
         // Copy construct a second version so we can
         // shrink non-destructively. Not really necessary
         // here, but just to show it can be done :)
-        imgLibrary testImg1(argv[1]);
+        ImgLibrary testImg1(argv[1]);
 
 //        testImg1.flipHorizontal();
 //        testImg1.save("flip.jpeg");

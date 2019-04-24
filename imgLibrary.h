@@ -368,6 +368,28 @@ public:
          }
     }
 
+    void padding(int pad) {
+         for(size_t x = 0; x < height; x++) {
+             for(int k = 0; k < 3*pad; k++) {
+                 output.m_bitmapData[x].insert(output.m_bitmapData[x].begin(), 0);
+                 output.m_bitmapData[x].push_back(0);
+             }
+         }
+         output.m_width += 2*pad;
+         for(int k = 0; k < pad; k++) {
+             vector<uint8_t> v;
+             for(int i = 0; i < (int)output.m_width*3; i++) {
+                 v.push_back(0);
+             }
+             output.m_bitmapData.insert(output.m_bitmapData.begin(), v);
+             output.m_bitmapData.push_back(v);
+         }
+
+        output.m_height += 2*pad;
+        height = output.getHeight();
+         width = output.getWidth();
+    }
+
 };
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

@@ -52,6 +52,7 @@ int main( int argc, char* argv[] )
           testImg1.rotateClockwise();
           testImg1.rotate180();
           testImg1.rotate180();
+          testImg1.padding(16);
         testImg1.save("output1.jpeg");
 
 
@@ -162,38 +163,6 @@ int main( int argc, char* argv[] )
 
 ////////////////////////////////////////////////////////////////
 
-        // Add padding
-        Image add_pad(argv[1]);
-        Image a_p = add_pad;
-
-        // for(size_t x = 0; x < a_p.getHeight(); x++) {
-        //     for(int k = 0; k < 51; k++) {
-        //         a_p.m_bitmapData[x].insert(a_p.m_bitmapData[x].begin(), 0);
-        //         a_p.m_bitmapData[x].push_back(0);
-        //     }
-        // }
-        // a_p.m_width += 32;
-        // for(int k = 0; k < 16; k++) {
-        //     vector<uint8_t> v;
-        //     for(int i = 0; i < (int)a_p.m_width*3; i++) {
-        //         v.push_back(0);
-        //     }
-        //     a_p.m_bitmapData.insert(a_p.m_bitmapData.begin(), v);
-        //     a_p.m_bitmapData.push_back(v);
-        // }
-        
-        // a_p.m_height += 32;
-        // a_p.save("add_pad.jpeg", 100);
-
-        // for ( size_t y = 0; y < height; ++y )
-        // {
-        //     for ( size_t x = 0; x < width; ++x )
-        //     {
-        //         uint8_t luma = dupImg.getLuminance( x, y );
-        //         // display( luma );
-        //     }
-        //     std::cout << "\n";
-        // }
 
 
 //////////////////////////////////////////////////////////////

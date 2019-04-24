@@ -53,6 +53,7 @@ int main( int argc, char* argv[] )
           testImg1.rotate180();
           testImg1.rotate180();
           testImg1.padding(16);
+          testImg1.invert();
         testImg1.save("output1.jpeg");
 
 
@@ -159,29 +160,6 @@ int main( int argc, char* argv[] )
 /////////////////////////////////////////////////////////
 // Brightness and Contrast Modification
         // https://docs.opencv.org/3.4/d3/dc1/tutorial_basic_linear_transform.html
-
-
-////////////////////////////////////////////////////////////////
-
-
-
-//////////////////////////////////////////////////////////////
-        // Invert image
-        // Image inv_image(argv[1]);
-        // Image i_v = inv_image;
-        // Image n_v(argv[1]);
-        // for(size_t y = 0; y < height; y++) {
-        //     for(size_t x = 0; x < width; x++) {
-        //         auto pixels = i_v.getPixel(x, y);
-        //         int i = 0;
-        //         for(; i < 3; i++) {
-        //             n_v.m_bitmapData[y][x*3 + i] = ~i_v.m_bitmapData[y][x*3 + i];
-        //         }
-        //     }
-        // }
-
-        // n_v.save("Inverted.jpeg", 100);
-
 
 
 /////////////////////////////////////////////////////////////

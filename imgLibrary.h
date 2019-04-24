@@ -387,7 +387,20 @@ public:
 
         output.m_height += 2*pad;
         height = output.getHeight();
-         width = output.getWidth();
+        width = output.getWidth();
+    }
+
+    void invert() {
+        // Invert image
+         for(size_t y = 0; y < height; y++) {
+             for(size_t x = 0; x < width; x++) {
+                 auto pixels = output.getPixel(x, y);
+                 int i = 0;
+                 for(; i < 3; i++) {
+                     output.m_bitmapData[y][x*3 + i] = ~output.m_bitmapData[y][x*3 + i];
+                 }
+             }
+         }
     }
 
 };

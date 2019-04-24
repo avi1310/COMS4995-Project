@@ -1,8 +1,8 @@
-#include "jpeg.h"
-using namespace std;
 #include <iostream>
 #include <map>
 #include "ImgLibrary.h"
+
+using namespace std;
 
 void display( uint8_t luma )
 {
@@ -23,10 +23,9 @@ int main( int argc, char* argv[] )
     }
     try 
     {
-        using namespace marengo::jpeg;
         // Constructor expects a filename to load:
-        Image imgOriginal( argv[1] );
-        Image img = imgOriginal;
+        // Image imgOriginal( argv[1] );
+        // Image img = imgOriginal;
         // Copy construct a second version so we can
         // shrink non-destructively. Not really necessary
         // here, but just to show it can be done :)
@@ -48,13 +47,7 @@ int main( int argc, char* argv[] )
 //        testImg1.brightnessMod(20);
 //        testImg1.save("brightness.jpeg");
 //        testImg1.grayScale();
-          testImg1.rotateAntiClockwise();
-          testImg1.rotateClockwise();
-          testImg1.rotate180();
-          testImg1.rotate180();
-          testImg1.padding(16);
-          testImg1.invert();
-        testImg1.save("output1.jpeg");
+          testImg1.rotateAntiClockwise().rotateClockwise().rotate180().rotate180().padding(16).invert().save("output1.jpg");
 
 
 //        testImg1.edgeDetection();
@@ -163,21 +156,21 @@ int main( int argc, char* argv[] )
 
 
 /////////////////////////////////////////////////////////////
-        Image trialguy(1920,1080);
-        for(size_t i=0; i<trialguy.getWidth(); i++){
-            for(size_t j=0;j<trialguy.getHeight();j++){
-                std::vector<uint8_t> temp {255, 100, 100};
-                trialguy.setPixel(i,j,temp);
-            }
-        }
-        trialguy.save("Trial.jpeg", 100);
+        // Image trialguy(1920,1080);
+        // for(size_t i=0; i<trialguy.getWidth(); i++){
+        //     for(size_t j=0;j<trialguy.getHeight();j++){
+        //         std::vector<uint8_t> temp {255, 100, 100};
+        //         trialguy.setPixel(i,j,temp);
+        //     }
+        // }
+        // trialguy.save("Trial.jpeg", 100);
 
-        std::cout << "\nImage height: " << img.getHeight();
-        std::cout << "\nImage width : " << img.getWidth();
-        // Pixel "Size" is 3 bytes for colour images (i.e. R,G, & B)
-        // and 1 byte for monochrome.
-        std::cout << "\nImage px sz : " << img.getPixelSize();
-        std::cout << std::endl;
+        // std::cout << "\nImage height: " << img.getHeight();
+        // std::cout << "\nImage width : " << img.getWidth();
+        // // Pixel "Size" is 3 bytes for colour images (i.e. R,G, & B)
+        // // and 1 byte for monochrome.
+        // std::cout << "\nImage px sz : " << img.getPixelSize();
+        // std::cout << std::endl;
         return 0;
     }
     catch( const std::exception& e )

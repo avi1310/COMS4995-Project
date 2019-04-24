@@ -23,41 +23,41 @@ public:
 	~ImgLibrary(){}
 
 	ImgLibrary(char *filename);
-	void save(const std::string& fileName);
+	ImgLibrary& save(const std::string& fileName);
 
-	void grayScale();
+	ImgLibrary& grayScale();
 
 	//Need to check error with setPixel which is commented out;
-	void flipHorizontal();
+	ImgLibrary& flipHorizontal();
 
-	void flipVertical();
+	ImgLibrary& flipVertical();
 
-	void blur();
+	ImgLibrary& blur();
 
-	void resize(int newWidth);
+	ImgLibrary& resize(int newWidth);
 
 	//Check Output
-	void edgeDetection();
+	ImgLibrary& edgeDetection();
 
-	void luminanceScaling(int factor);
+	ImgLibrary& luminanceScaling(int factor);
 
-	void cropImage(int xOffset, int yOffset, size_t widthCrop, size_t heightCrop);
+	ImgLibrary& cropImage(int xOffset, int yOffset, size_t widthCrop, size_t heightCrop);
 
-	void masking(int xOffset, int yOffset, int xWidth, int yWidth);
+	ImgLibrary& masking(int xOffset, int yOffset, int xWidth, int yWidth);
 
-	void brightnessMod(double beta);
+	ImgLibrary& brightnessMod(double beta);
 
-	void contrastMod(double alpha);
+	ImgLibrary& contrastMod(double alpha);
 
-	void rotateAntiClockwise();
+	ImgLibrary& rotateAntiClockwise();
 
-	void rotateClockwise();
+	ImgLibrary& rotateClockwise();
 
-	void rotate180();
+	ImgLibrary& rotate180();
 
-	void padding(int pad);
+	ImgLibrary& padding(int pad);
 
-	void invert();
+	ImgLibrary& invert();
 
 };
 

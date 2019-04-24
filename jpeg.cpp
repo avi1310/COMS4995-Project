@@ -216,10 +216,10 @@ void Image::savePpm( const std::string& fileName ) const
 
 std::vector<uint8_t> Image::getPixel( size_t x, size_t y ) const
 {
-	if (y >= m_bitmapData.size()){
+	if (y > m_bitmapData.size()){
 	   throw std::out_of_range( "Y value too large" );
 	}
-	if (x >= m_bitmapData[0].size() / m_pixelSize){
+	if (x > m_bitmapData[0].size() / m_pixelSize){
 	   throw std::out_of_range( "X value too large" );
 	}
 	std::vector<uint8_t> vec;
@@ -247,10 +247,10 @@ uint8_t Image::getLuminance( size_t x, size_t y ) const
 std::vector<uint8_t>
 Image::getAverage( size_t x, size_t y, size_t boxSize ) const
 {
-	if ( boxSize > m_width ){
+	if ( boxSize >= m_width ){
 		throw std::out_of_range( "Box size is greater than image width" );
 	}
-	if ( boxSize > m_height ){
+	if ( boxSize >= m_height ){
 		throw std::out_of_range( "Box size is greater than image height" );
 	}
 	if ( x + boxSize  >= m_width ){
@@ -377,7 +377,8 @@ void Image::setPixel(size_t x, size_t y, std::vector<uint8_t> pixelValue)
 		std::cout<<"y:"<<y<<" m_bitmapData:"<<m_bitmapData.size()<<"\n";
 		throw std::out_of_range( "SetPixel: Y value too large" );
 	}
-	if ( x >= m_bitmapData[0].size() / m_pixelSize ){
+	if ( x >= (m_bitmapData[0].size() / m_pixelSize) ){
+		std::cout<<"x:"<<x<<" m_bitmapData:"<<m_bitmapData[0].size()/m_pixelSize<<"\n";
 		throw std::out_of_range( "SetPixel: X value too large" );
 	}
 	for ( size_t n = 0; n < m_pixelSize; ++n ){

@@ -40,18 +40,20 @@ int main( int argc, char* argv[] )
 //       testImg1.resize(400);
 //        testImg1.save("resized.jpeg");
 //
-//        testImg1.masking(200, 500, 200, 200);
+       // testImg1.masking(200, 500, 200, 200);
 //        testImg1.save("mask.jpeg");
-//        testImg1.contrastMod(2.3);
+       testImg1.contrastMod(2.3);
 //        testImg1.save("contrast.jpeg");
-//        testImg1.brightnessMod(20);
+       // testImg1.brightnessMod(20);
 //        testImg1.save("brightness.jpeg");
 //        testImg1.grayScale();
-          testImg1.rotateAntiClockwise().rotateClockwise().rotate180().rotate180().padding(16).invert().save("output1.jpg");
+          // testImg1.rotateAntiClockwise().rotateClockwise().rotate180().rotate180().padding(16).invert().save("output1.jpg");
+            // testImg1.edgeDetection().save("output.jpg");
+        // testImg1.flipVertical().save("output.jpg");
 
 
 //        testImg1.edgeDetection();
-//        testImg1.save("edgeDetection.jpeg");
+       testImg1.save("edgeDetection.jpeg");
 //          testImg1.luminanceScaling(2);
 //          testImg1.save("luminanceScaling.jpeg");
 

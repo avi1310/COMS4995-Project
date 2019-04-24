@@ -14,54 +14,24 @@ ImgLibrary& ImgLibrary::save(const std::string& fileName) {
 }
 
 ImgLibrary& ImgLibrary::grayScale() {
-	for ( size_t y = 0; y < height; ++y )
-	{
-		for ( size_t x = 0; x < width; ++x )
-		{
-			// uint8_t luma = img.getLuminance( x, y );
-			// display( luma );
-			vector<uint8_t> p2;
-			vector<uint8_t> pixels = output.getPixel( x, y);
-			// int i = 0;
-			// for(auto &p: pixels) {
-				// cout<<(int)p<<' ';
-			int luminance = (int)output.getLuminance(x, y);
-			output.m_bitmapData[y][x*3] = luminance;
-			output.m_bitmapData[y][x*3+1] = luminance;
-			output.m_bitmapData[y][x*3+2] = luminance;
-			// dup_g.m_bitmapData[y][x*3] = (int)img.getLuminance(x, y);
-				// i++;
-				// pp.push_back(2*int(p));
-				// p2.push_back(2*int(p));
-			// }
-			// dupImg.m_bitmapData[y][x] = pp;
-			// cout<<'\n';
+	for ( size_t y = 0; y < output.getHeight(); ++y ) {
+		for ( size_t x = 0; x < output.getWidth(); ++x ) {
+			uint8_t luminance = output.getLuminance(x, y);
+			output.setPixel(x,y,{luminance, luminance, luminance});
 		}
-		// std::cout << "\n";
 	}
 
 	return *this;
 }
 
 ImgLibrary& ImgLibrary::flipHorizontal() {
-	for(size_t y = 0; y < height; ++y) {
-		for(size_t x = 0; x < width/2; ++x) {
-			// cout<<"Here = "<<x<<" "<<y<<endl;
-//                 cout<<x<<"  "<<width - x<<endl;
-			auto pixels_l = output.getPixel(x, y);
-			auto pixels_r = output.getPixel(width - x, y);
-			// auto pixels_r = dup_f.getPixel(x, y);
+	for(size_t y = 0; y < output.getHeight(); ++y) {
+		for(size_t x = 0; x < output.getWidth()/2; ++x) {
+			std::vector<uint8_t> pixels_l = output.getPixel(x, y);
+			std::vector<uint8_t> pixels_r = output.getPixel(output.getWidth() - x - 1, y);
 
-			int i = 0;
-			for(auto &p: pixels_r) {
-				output.m_bitmapData[y][x*3 + i] = (int)p;
-				i++;
-			}
-			i = 0;
-			for(auto &p: pixels_l) {
-				output.m_bitmapData[y][(width - x)*3 + i] = (int)p;
-				i++;
-			}
+			output.setPixel(x, y, pixels_r);
+			output.setPixel(output.getWidth()-x-1, y, pixels_l);
 		}
 	}
 
@@ -69,27 +39,13 @@ ImgLibrary& ImgLibrary::flipHorizontal() {
 }
 
 ImgLibrary& ImgLibrary::flipVertical() {
-	for(size_t y = 0; y < height/2; ++y) {
-		for(size_t x = 0; x < width; ++x) {
-			// cout<<"Here = "<<y<<" "<<height - y<<endl;
-			// cout<<x<<"  "<<width - x<<endl;
-			// cout<<"1"<<endl;
-			auto pixels_u = output.getPixel(x, y);
-			// cout<<"2"<<endl;
-			auto pixels_d = output.getPixel(x, height - y - 1);
-			//cout<<pixels_d.size()<<endl;
-			// auto pixels_r = dup_f.getPixel(x, y);
-			// cout<<"Yes";
-			int i = 0;
-			for(auto &p: pixels_d) {
-				output.m_bitmapData[y][x*3 + i] = (int)p;
-				i++;
-			}
-			i = 0;
-			for(auto &p: pixels_u) {
-				output.m_bitmapData[height - y - 1][x*3 + i] = (int)p;
-				i++;
-			}
+	for(size_t y = 0; y < output.getHeight()/2; ++y) {
+		for(size_t x = 0; x < output.getWidth(); ++x) {
+			std::vector<uint8_t> pixels_u = output.getPixel(x, y);
+			std::vector<uint8_t> pixels_d = output.getPixel(x, output.getHeight() - y - 1);
+
+			output.setPixel(x,y,pixels_d);
+			output.setPixel(x,output.getHeight()-y-1,pixels_u);
 		}
 	}
 
@@ -108,32 +64,26 @@ ImgLibrary& ImgLibrary::blur() {
 //             {1, -4, 1},
 //             {0, 1, 0},
 //         };
-	for(size_t y = 0; y < height; y++) {
-		for(size_t x = 0; x < width; x++) {
-			// auto pixels = blur.getPixel(x, y);
-			output.m_bitmapData[y][x*3] = 0.0;
-			output.m_bitmapData[y][x*3 + 1] = 0.0;
-			output.m_bitmapData[y][x*3 + 2] = 0.0;
-		}
-	}
+	// for(size_t y = 0; y < output.getHeight(); y++) {
+	// 	for(size_t x = 0; x < output.getWidth(); x++) {
+	// 		output.setPixel(x,y,{0,0,0});
+	// 	}
+	// }
 
-	for(size_t y=1; y < height-1; y++) {
-		for(size_t x = 1; x < width-1; x++) {
+	for(size_t y=1; y < output.getHeight()-1; y++) {
+		for(size_t x = 1; x < output.getWidth()-1; x++) {
 			float sum[3] = {0.0, 0.0, 0.0};
 			for(int k = -1; k <= 1; k++) {
 				for(int j = -1; j <= 1; j++) {
-					// cout<<"Now"<<x<<' '<<y<<endl;
-					auto pixels = img.getPixel(x - k, y - j);
+					std::vector<uint8_t> pixels = img.getPixel(x - k, y - j);
 					int i=0;
-					for(auto &p: pixels) {
+					for(uint8_t &p: pixels) {
 						sum[i] = sum[i] + kernel[j+1][k+1]*p;
 						i++;
 					}
 				}
 			}
-			output.m_bitmapData[y][x*3] = sum[0];
-			output.m_bitmapData[y][x*3 + 1] = sum[1];
-			output.m_bitmapData[y][x*3 + 2] = sum[2];
+			output.setPixel(x,y,{uint8_t(sum[0]), uint8_t(sum[1]), uint8_t(sum[2])});
 		}
 	}
 
@@ -175,34 +125,29 @@ ImgLibrary& ImgLibrary::edgeDetection() {
 		{2, -1, -1},
 	};
 
-	for(size_t y = 0; y < height; y++) {
-		for(size_t x = 0; x < width; x++) {
-			// auto pixels = blur.getPixel(x, y);
-			output.m_bitmapData[y][x*3] = 0.0;
-			output.m_bitmapData[y][x*3 + 1] = 0.0;
-			output.m_bitmapData[y][x*3 + 2] = 0.0;
+	for(size_t y = 0; y < output.getHeight(); y++) {
+		for(size_t x = 0; x < output.getWidth(); x++) {
+			output.setPixel(x,y,{0,0,0});
 		}
 	}
 
-	for(size_t y = 1; y < height-1; y++) {
-		for(size_t x = 1; x < width-1; x++) {
-			// float sum[3] = {0.0, 0.0, 0.0};
+	for(size_t y = 1; y < output.getHeight()-1; y++) {
+		for(size_t x = 1; x < output.getWidth()-1; x++) {
 			float sum = 0.0;
 			for(int k = -1; k <= 1; k++) {
 				for(int j = -1; j <= 1; j++) {
-					// cout<<"Now"<<x<<' '<<y<<endl;
-					auto pixels = img.getPixel(x - k, y - j);
-					// int i=0;
-					for(auto &p: pixels) {
-						// sum[i] = sum[i] + kernel[j+1][k+1]*p;
-						// i++;
+					std::vector<uint8_t> pixels = img.getPixel(x - k, y - j);
+
+					for(uint8_t &p: pixels) {
 						sum = sum + kernel[j+1][k+1]*p;
 					}
 				}
 			}
-			output.m_bitmapData[y][x*3] = sum;
-			output.m_bitmapData[y][x*3 + 1] = sum;
-			output.m_bitmapData[y][x*3 + 2] = sum;
+
+			output.setPixel(x, y, {uint8_t(sum), uint8_t(sum), uint8_t(sum)});
+			// output.m_bitmapData[y][x*3] = sum;
+			// output.m_bitmapData[y][x*3 + 1] = sum;
+			// output.m_bitmapData[y][x*3 + 2] = sum;
 		}
 	}
 
@@ -212,22 +157,22 @@ ImgLibrary& ImgLibrary::edgeDetection() {
 ImgLibrary& ImgLibrary::luminanceScaling(int factor) {
 	// Luminance Modification
 
-	for(size_t y = 0; y < height; y++) {
-		for(size_t x = 0; x < width; x++) {
-			auto pixels = output.getPixel(x, y);
-			uint8_t a = (pixels[0] * 2)*factor/6;
-			uint8_t b = (pixels[1] * 3)*factor/6;
-			uint8_t c = (pixels[2])*factor/6;
-			output.m_bitmapData[y][x*3] = a;
-			output.m_bitmapData[y][x*3 + 1] = b;
-			output.m_bitmapData[y][x*3 + 2] = c;
+	for(size_t y = 0; y < output.getHeight(); y++) {
+		for(size_t x = 0; x < output.getWidth(); x++) {
+			std::vector<uint8_t> pixels = output.getPixel(x, y);
+
+			output.setPixel(x,y,{
+				uint8_t((pixels[0] * 2)*factor/6),
+				uint8_t((pixels[1] * 3)*factor/6),
+				uint8_t((pixels[2])*factor/6)}
+			);
 		}
 	}
 
 	return *this;
 }
 
-ImgLibrary& ImgLibrary::cropImage(int xOffset, int yOffset, size_t widthCrop, size_t heightCrop) {
+ImgLibrary& ImgLibrary::cropImage(size_t xOffset, size_t yOffset, size_t widthCrop, size_t heightCrop) {
 	Image temp(widthCrop, heightCrop);
 	for(size_t i=xOffset, i1=0; i<xOffset+widthCrop; i++, i1++){
 		for(size_t j=yOffset, j1=0; j<yOffset+heightCrop; j++, j1++){
@@ -235,23 +180,16 @@ ImgLibrary& ImgLibrary::cropImage(int xOffset, int yOffset, size_t widthCrop, si
 		}
 	}
 	output = temp;
-	height = output.getHeight();
-	width = output.getWidth();
 
 	return *this;
 }
 
-ImgLibrary& ImgLibrary::masking(int xOffset, int yOffset, int xWidth, int yWidth) {
+ImgLibrary& ImgLibrary::masking(size_t xOffset, size_t yOffset, size_t xWidth, size_t yWidth) {
 	// Masking
 
-	for(size_t y = 0; y < height; y++) {
-		for(size_t x = 0; x < width; x++) {
-			if((int)y >= yOffset && (int)y <= (yWidth + yOffset) && (int)x >= xOffset && (int)x <= (xWidth + xOffset)) { // mask
-				int i = 0;
-				for(; i < 3; i++) {
-					output.m_bitmapData[y][x*3 + i] &= 0x00;
-				}
-			}
+	for(size_t y = yOffset-1; y < yOffset+yWidth-1 && y < output.getHeight(); y++) {
+		for(size_t x = xOffset-1; x < xOffset+xWidth-1 && x < output.getWidth(); x++) {
+				output.setPixel(x,y, {0,0,0});
 		}
 	}
 
@@ -260,18 +198,19 @@ ImgLibrary& ImgLibrary::masking(int xOffset, int yOffset, int xWidth, int yWidth
 
 ImgLibrary& ImgLibrary::brightnessMod(double beta) {
 	Image img = output;
-	for(size_t y = 0; y < height; y++) {
-		for(size_t x = 0; x < width; x++) {
-			// auto pixels = origImg.getPixel(x, y);
-			int i = 0;
-			for(; i < 3;) {
-				int val = (int)(img.m_bitmapData[y][x*3 + i] + beta);
-				if(val > 255) {
+	for(size_t y = 0; y < output.getHeight(); y++) {
+		for(size_t x = 0; x < output.getWidth(); x++) {
+			std::vector<uint8_t> currPixel = output.getPixel(x,y);
+
+			for(uint8_t &p: currPixel){
+				int val = int(p+beta);
+				if(val > 255){
 					val = 255;
 				}
-				output.m_bitmapData[y][x*3 + i] = val;
-				i++;
+				p = uint8_t(val);
 			}
+
+			output.setPixel(x,y,currPixel);
 		}
 	}
 
@@ -280,18 +219,19 @@ ImgLibrary& ImgLibrary::brightnessMod(double beta) {
 
 ImgLibrary& ImgLibrary::contrastMod(double alpha) {
 	Image img = output;
-	for(size_t y = 0; y < height; y++) {
-		for(size_t x = 0; x < width; x++) {
-			// auto pixels = origImg.getPixel(x, y);
-			int i = 0;
-			for(; i < 3;) {
-				int val = (int)(alpha*img.m_bitmapData[y][x*3 + i]);
-				if(val > 255) {
+	for(size_t y = 0; y < output.getHeight(); y++) {
+		for(size_t x = 0; x < output.getWidth(); x++) {
+			std::vector<uint8_t> currPixel = output.getPixel(x,y);
+
+			for(uint8_t &p: currPixel){
+				int val = int(p*alpha);
+				if(val > 255){
 					val = 255;
 				}
-				output.m_bitmapData[y][x*3 + i] = val;
-				i++;
+				p = uint8_t(val);
 			}
+
+			output.setPixel(x,y,currPixel);
 		}
 	}
 
@@ -379,7 +319,7 @@ ImgLibrary& ImgLibrary::padding(int pad) {
 	}
 	output.m_width += 2*pad;
 	for(int k = 0; k < pad; k++) {
-		vector<uint8_t> v;
+		std::vector<uint8_t> v;
 		for(int i = 0; i < (int)output.m_width*3; i++) {
 			v.push_back(0);
 		}
@@ -398,7 +338,7 @@ ImgLibrary& ImgLibrary::invert() {
 	// Invert image
 	for(size_t y = 0; y < height; y++) {
 		for(size_t x = 0; x < width; x++) {
-			auto pixels = output.getPixel(x, y);
+			std::vector<uint8_t> pixels = output.getPixel(x, y);
 			int i = 0;
 			for(; i < 3; i++) {
 				output.m_bitmapData[y][x*3 + i] = ~output.m_bitmapData[y][x*3 + i];

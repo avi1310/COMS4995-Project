@@ -6,7 +6,6 @@
 #define COMS4995_PROJECT_IMGLIBRARY_H
 
 #include "jpeg.h"
-using namespace std;
 #include <iostream>
 #include <map>
 #include <string>
@@ -41,9 +40,9 @@ public:
 
 	ImgLibrary& luminanceScaling(int factor);
 
-	ImgLibrary& cropImage(int xOffset, int yOffset, size_t widthCrop, size_t heightCrop);
+	ImgLibrary& cropImage(size_t xOffset, size_t yOffset, size_t widthCrop, size_t heightCrop);
 
-	ImgLibrary& masking(int xOffset, int yOffset, int xWidth, int yWidth);
+	ImgLibrary& masking(size_t xOffset, size_t yOffset, size_t xWidth, size_t yWidth);
 
 	ImgLibrary& brightnessMod(double beta);
 

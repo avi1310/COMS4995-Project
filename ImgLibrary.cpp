@@ -3,12 +3,10 @@
 ImgLibrary::ImgLibrary(char *filename) {
 	Image imgOriginal(filename);
 	this->output = imgOriginal;
-	this->height = output.getHeight();
-	this->width  = output.getWidth();
 }
 
-ImgLibrary& ImgLibrary::save(const std::string& fileName) {
-	output.save(fileName, 100);
+ImgLibrary& ImgLibrary::save(const std::string& fileName, int quality) {
+	output.save(fileName, quality);
 
 	return *this;
 }
@@ -274,25 +272,15 @@ ImgLibrary& ImgLibrary::rotate180() {
 }
 
 ImgLibrary& ImgLibrary::padding(int pad) {
-	for(size_t x = 0; x < output.getWidth(); x++) {
-		for(int k = 0; k < 3*pad; k++) {
-			output.m_bitmapData[x].insert(output.m_bitmapData[x].begin(), 0);
-			output.m_bitmapData[x].push_back(0);
-		}
-	}
-	output.m_width += 2*pad;
-	for(int k = 0; k < pad; k++) {
-		std::vector<uint8_t> v;
-		for(int i = 0; i < (int)output.getWidth()*3; i++) {
-			v.push_back(0);
-		}
-		output.m_bitmapData.insert(output.m_bitmapData.begin(), v);
-		output.m_bitmapData.push_back(v);
-	}
+	Image img(output.getWidth() + 2*pad, output.getHeight() + 2*pad);
 
-	output.m_height += 2*pad;
-	height = output.getHeight();
-	width = output.getWidth();
+	for(size_t x = 0; x < output.getWidth(); ++x){
+		for(size_t y = 0; y < output.getHeight(); ++y){
+			img.setPixel(x+pad, y+pad, output.getPixel(x,y));
+		}
+	}
+	
+	output = img;
 
 	return *this;
 }

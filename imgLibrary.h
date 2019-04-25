@@ -13,8 +13,6 @@ using namespace marengo::jpeg;
 
 class ImgLibrary {
 	Image output;
-	size_t height;
-	size_t width;
 
 public:
 	ImgLibrary(){}
@@ -22,7 +20,7 @@ public:
 	~ImgLibrary(){}
 
 	ImgLibrary(char *filename);
-	ImgLibrary& save(const std::string& fileName);
+	ImgLibrary& save(const std::string& fileName, int quality = 95);
 
 	ImgLibrary& grayScale();
 

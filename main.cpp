@@ -47,14 +47,14 @@ int main( int argc, char* argv[] )
        // testImg1.brightnessMod(20);
 //        testImg1.save("brightness.jpeg");
 //        testImg1.grayScale();
-        testImg1.invert();
-          // testImg1.rotateAntiClockwise().rotateClockwise().rotate180().rotate180().padding(16).invert().save("output1.jpg");
+        testImg1.padding(50);
+          testImg1.rotateAntiClockwise().rotateClockwise().rotate180().rotate180().padding(16).invert().save("output1.jpg");
             // testImg1.edgeDetection().save("output.jpg");
         // testImg1.flipVertical().save("output.jpg");
 
 
 //        testImg1.edgeDetection();
-       testImg1.save("edgeDetection.jpeg");
+       // testImg1.save("edgeDetection.jpeg");
 //          testImg1.luminanceScaling(2);
 //          testImg1.save("luminanceScaling.jpeg");
 

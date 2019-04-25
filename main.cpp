@@ -1,8 +1,9 @@
 #include <iostream>
-#include <map>
+
 #include "ImgLibrary.h"
 
 using namespace std;
+using namespace imglib;
 
 void display( uint8_t luma )
 {

@@ -7,55 +7,62 @@
 
 #include "jpeg.h"
 #include <iostream>
-#include <map>
 #include <string>
+#include <stdexcept>
+
 using namespace marengo::jpeg;
 
-class ImgLibrary {
-	Image output;
+#define MAX_LUMINANCE 10
+#define MIN_LUMINANCE 0
 
-public:
-	ImgLibrary(){}
+namespace imglib {
+	class ImgLibrary {
+		Image output;
 
-	~ImgLibrary(){}
+	public:
+		ImgLibrary(){}
 
-	ImgLibrary(char *filename);
-	ImgLibrary& save(const std::string& fileName, int quality = 95);
+		~ImgLibrary(){}
 
-	ImgLibrary& grayScale();
+		ImgLibrary(char *filename);
+		ImgLibrary& save(const std::string& fileName, int quality = 95);
 
-	//Need to check error with setPixel which is commented out;
-	ImgLibrary& flipHorizontal();
+		ImgLibrary& grayScale();
 
-	ImgLibrary& flipVertical();
+		//Need to check error with setPixel which is commented out;
+		ImgLibrary& flipHorizontal();
 
-	ImgLibrary& blur();
+		ImgLibrary& flipVertical();
 
-	ImgLibrary& resize(int newWidth);
+		ImgLibrary& blur();
 
-	//Check Output
-	ImgLibrary& edgeDetection();
+		ImgLibrary& resize(int newWidth);
 
-	ImgLibrary& luminanceScaling(int factor);
+		//Check Output
+		ImgLibrary& edgeDetection();
 
-	ImgLibrary& cropImage(size_t xOffset, size_t yOffset, size_t widthCrop, size_t heightCrop);
+		ImgLibrary& luminanceScaling(int factor);
 
-	ImgLibrary& masking(size_t xOffset, size_t yOffset, size_t xWidth, size_t yWidth);
+		ImgLibrary& cropImage(size_t xOffset, size_t yOffset, size_t widthCrop, size_t heightCrop);
 
-	ImgLibrary& brightnessMod(double beta);
+		ImgLibrary& masking(size_t xOffset, size_t yOffset, size_t xWidth, size_t yWidth);
 
-	ImgLibrary& contrastMod(double alpha);
+		ImgLibrary& brightnessMod(double beta);
 
-	ImgLibrary& rotateAntiClockwise();
+		ImgLibrary& contrastMod(double alpha);
 
-	ImgLibrary& rotateClockwise();
+		ImgLibrary& rotateAntiClockwise();
 
-	ImgLibrary& rotate180();
+		ImgLibrary& rotateClockwise();
 
-	ImgLibrary& padding(int pad);
+		ImgLibrary& rotate180();
 
-	ImgLibrary& invert();
+		ImgLibrary& padding(int pad);
 
-};
+		ImgLibrary& invert();
+
+	};
+}
+
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

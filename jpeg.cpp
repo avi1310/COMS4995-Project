@@ -369,6 +369,9 @@ void Image::resize( size_t newWidth )
 	else if ( newWidth > m_width ){
 		expand( newWidth );
 	}
+	else {
+		throw std::logic_error("Same width as current image");
+	}
 }
 
 void Image::setPixel(size_t x, size_t y, std::vector<uint8_t> pixelValue)

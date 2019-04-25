@@ -388,7 +388,6 @@ void Image::setPixel(size_t x, size_t y, std::vector<uint8_t> pixelValue)
 		m_bitmapData[ y ][ x * m_pixelSize + n ] = pixelValue[n];
 	}
 }
-
 } // namespace jpeg
 } // namespace marengo
 

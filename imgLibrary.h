@@ -12,10 +12,17 @@
 
 using namespace marengo::jpeg;
 
-#define MAX_LUMINANCE 10
-#define MIN_LUMINANCE 0
-
 namespace imglib {
+
+	static int const MAX_LUMINANCE = 10;
+	static int const MIN_LUMINANCE = 0;
+
+	static int const MAX_CONTRAST = 100;
+	static int const MIN_CONTRAST = 0;
+
+	static int const MAX_BRIGHTNESS = 100;
+	static int const MIN_BRIGHTNESS = 0;
+
 	class ImgLibrary {
 		Image output;
 

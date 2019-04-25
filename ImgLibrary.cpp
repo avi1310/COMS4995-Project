@@ -217,7 +217,7 @@ namespace imglib {
 	}
 
 	ImgLibrary& ImgLibrary::brightnessMod(double beta) {
-		if (beta < 0 || beta >= 100) {
+		if (beta < MIN_BRIGHTNESS || beta >= MAX_BRIGHTNESS) {
 			throw std::out_of_range("Brightness value out of range");
 		}
 
@@ -242,7 +242,7 @@ namespace imglib {
 	}
 
 	ImgLibrary& ImgLibrary::contrastMod(double alpha) {
-		if (alpha < 0 || alpha >= 100) {
+		if (alpha < MIN_CONTRAST || alpha >= MAX_CONTRAST) {
 			throw std::out_of_range("Contrast value out of range");
 		}
 

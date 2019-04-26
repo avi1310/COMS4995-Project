@@ -2,8 +2,7 @@
 
 namespace imglib {
 	ImgLibrary::ImgLibrary(char *filename) {
-		Image imgOriginal(filename);
-		this->output = imgOriginal;
+		this->output = Image(filename);
 	}
 
 	ImgLibrary& ImgLibrary::save(const std::string& fileName, int quality) {

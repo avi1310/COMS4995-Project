@@ -1,6 +1,9 @@
 # COMS4995-Project
 
-# Introduction
+# Table of Contents 
+*[Introduction](#intro)
+
+# <a name="intro"></a>Introduction
 Image manipulation is one of the primary techniques used in Computer Vision research. It augments the data and provides meaningful insight into understanding the domain better. However, there are not many lightweight libraries available out there in C++, which provide a lucid interface for various image manipulations. This library caters to that. **NotImage** is the library built in C++ which provides easy-to-use APIs to achieve image manipulations such as GreyScale conversion, luminance, brightness, and contrast modifications as well as rotations. 
 
 # Getting Started

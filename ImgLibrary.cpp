@@ -314,8 +314,8 @@ namespace imglib {
 	ImgLibrary& ImgLibrary::padding(int pad) {
 		Image img(output.getWidth() + 2*pad, output.getHeight() + 2*pad);
 
-		for(size_t x = 0; x < output.getWidth(); ++x){
-			for(size_t y = 0; y < output.getHeight(); ++y){
+		for(size_t y = 0; y < output.getHeight(); ++y){
+			for(size_t x = 0; x < output.getWidth(); ++x){
 				img.setPixel(x+pad, y+pad, output.getPixel(x,y));
 			}
 		}

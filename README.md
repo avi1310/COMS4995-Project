@@ -2,14 +2,17 @@
 
 # Table of Contents 
 [Introduction](#intro)
+[Getting Started](#get-started)
+[Documentation](#documentation)
+[Chaining](#chaining)
 
 # <a name="intro"></a>Introduction
 Image manipulation is one of the primary techniques used in Computer Vision research. It augments the data and provides meaningful insight into understanding the domain better. However, there are not many lightweight libraries available out there in C++, which provide a lucid interface for various image manipulations. This library caters to that. **NotImage** is the library built in C++ which provides easy-to-use APIs to achieve image manipulations such as GreyScale conversion, luminance, brightness, and contrast modifications as well as rotations. 
 
-# Getting Started
+# <a name="get-started"></a>Getting Started
 To get started, clone this repository. <Add the steps>
 
-# Documentation
+# <a name="documentation"></a>Documentation
 This section describes the various APIs provided by the library and their usage.
 
 ## 1. grayScale
@@ -206,7 +209,7 @@ The fileName with which the new object will be saved. The quality of the saved i
 ### Returns
 The image object.
 
-# Chaining
+# <a name="chaining"></a>Chaining
 We also provide a chaining functionality to call multiple APIs together as follows. For example, to get a grayscale image, rotate by 90 degrees, add padding and then save, we could call the above APIs as follows:
 
 ```

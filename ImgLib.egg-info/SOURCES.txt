@@ -1,0 +1,6 @@
+setup.py
+ImgLib.egg-info/PKG-INFO
+ImgLib.egg-info/SOURCES.txt
+ImgLib.egg-info/dependency_links.txt
+ImgLib.egg-info/not-zip-safe
+ImgLib.egg-info/top_level.txt

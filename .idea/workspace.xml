@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="16c66ab1-e07b-49dc-a66b-eca86d62255a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImgLib/bindings.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ImgLib/bindings.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/MANIFEST.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/PKG-INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/attr.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/buffer_info.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/cast.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/chrono.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/common.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/complex.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/detail/class.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/detail/common.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/detail/descr.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/detail/init.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/detail/internals.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/detail/typeid.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/eigen.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/embed.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/eval.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/functional.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/iostream.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/numpy.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/operators.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/options.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/pybind11.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/pytypes.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/stl.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/include/pybind11/stl_bind.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/pybind11.egg-info/PKG-INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/pybind11.egg-info/SOURCES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/pybind11.egg-info/dependency_links.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/pybind11.egg-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/pybind11/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/pybind11/__main__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/pybind11/_version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/setup.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11-2.2.4/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/.appveyor.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/.gitmodules" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/.readthedocs.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/CONTRIBUTING.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/ISSUE_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/ISSUE_TEMPLATE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/MANIFEST.in" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/MANIFEST.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/Doxyfile" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/Doxyfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/_static/theme_overrides.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/_static/theme_overrides.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/chrono.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/chrono.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/custom.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/custom.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/eigen.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/eigen.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/functional.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/functional.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/overview.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/overview.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/stl.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/stl.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/strings.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/cast/strings.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/classes.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/classes.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/exceptions.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/exceptions.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/functions.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/functions.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/misc.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/misc.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/pycpp/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/pycpp/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/pycpp/numpy.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/pycpp/numpy.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/pycpp/object.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/pycpp/object.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/pycpp/utilities.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/pycpp/utilities.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/advanced/smart_ptrs.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/advanced/smart_ptrs.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/basics.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/basics.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/benchmark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/benchmark.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/benchmark.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/changelog.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/changelog.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/classes.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/classes.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/compiling.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/compiling.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/faq.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/faq.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/intro.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/intro.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/limitations.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/limitations.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/pybind11-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/pybind11-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/pybind11_vs_boost_python1.png" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/pybind11_vs_boost_python1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/pybind11_vs_boost_python1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/pybind11_vs_boost_python1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/pybind11_vs_boost_python2.png" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/pybind11_vs_boost_python2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/pybind11_vs_boost_python2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/pybind11_vs_boost_python2.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/reference.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/reference.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/release.rst" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/release.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/docs/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/docs/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/attr.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/attr.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/cast.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/cast.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/chrono.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/chrono.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/class_support.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/common.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/common.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/complex.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/complex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/descr.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/eigen.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/eigen.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/eval.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/eval.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/functional.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/functional.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/numpy.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/numpy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/operators.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/operators.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/options.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/options.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/pybind11.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/pybind11.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/pytypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/pytypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/stl.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/stl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/stl_bind.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/include/pybind11/stl_bind.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/include/pybind11/typeid.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/pybind11/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/pybind11/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/pybind11/_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/pybind11/_version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/setup.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/constructor_stats.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/constructor_stats.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/object.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/object.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/pybind11_tests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/pybind11_tests.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/pybind11_tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/pybind11_tests.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_alias_initialization.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_alias_initialization.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_buffers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_buffers.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_buffers.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_buffers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_callbacks.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_callbacks.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_callbacks.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_callbacks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_chrono.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_chrono.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_chrono.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_chrono.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_class_args.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_class_args.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/installed_function/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/installed_function/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/installed_target/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/installed_target/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/subdirectory_function/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/subdirectory_function/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/subdirectory_target/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/subdirectory_target/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_cmake_build/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_constants_and_functions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_constants_and_functions.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_constants_and_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_constants_and_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_copy_move_policies.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_copy_move_policies.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_docstring_options.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_docstring_options.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_docstring_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_docstring_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_eigen.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_eigen.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_eigen.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_eigen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_enum.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_enum.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_enum.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_enum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_eval.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_eval.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_eval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_eval_call.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_eval_call.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_exceptions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_exceptions.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_inheritance.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_inheritance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_issues.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_issues.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_keep_alive.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_keep_alive.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_kwargs_and_defaults.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_kwargs_and_defaults.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_kwargs_and_defaults.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_kwargs_and_defaults.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_methods_and_attributes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_methods_and_attributes.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_methods_and_attributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_methods_and_attributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_modules.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_modules.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_multiple_inheritance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_multiple_inheritance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_multiple_inheritance.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_multiple_inheritance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_array.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_array.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_array.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_dtypes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_dtypes.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_dtypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_dtypes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_vectorize.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_vectorize.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_vectorize.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_numpy_vectorize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_opaque_types.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_opaque_types.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_opaque_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_opaque_types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_operator_overloading.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_operator_overloading.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_operator_overloading.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_operator_overloading.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_pickling.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_pickling.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_pickling.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_pickling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_python_types.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_python_types.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_sequences_and_iterators.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_sequences_and_iterators.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_sequences_and_iterators.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_sequences_and_iterators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_smart_ptr.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_smart_ptr.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_smart_ptr.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_smart_ptr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_stl_binders.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_stl_binders.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_stl_binders.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_stl_binders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_virtual_functions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_virtual_functions.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tests/test_virtual_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tests/test_virtual_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tools/FindEigen3.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tools/FindEigen3.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tools/FindPythonLibsNew.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tools/FindPythonLibsNew.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tools/check-style.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tools/check-style.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tools/libsize.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tools/libsize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tools/mkdoc.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tools/mkdoc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tools/pybind11Config.cmake.in" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tools/pybind11Config.cmake.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pybind11/tools/pybind11Tools.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pybind11/tools/pybind11Tools.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test1.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ImgLib/bindings.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/test1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ImgLib/bindings.cpp" />
+        <option value="$PROJECT_DIR$/tests/test1.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/COMS4995-Project.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="709" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="COMS4995-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="COMS4995-Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="COMS4995-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="COMS4995-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="ImgLib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="COMS4995-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="COMS4995-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="16c66ab1-e07b-49dc-a66b-eca86d62255a" name="Default Changelist" comment="" />
+      <created>1556404947855</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556404947855</updated>
+      <workItem from="1556404949165" duration="1500000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1500000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1280" height="709" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tests/test.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ImgLib/bindings.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

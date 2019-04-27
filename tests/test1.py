@@ -6,7 +6,7 @@ class MainTest(unittest.TestCase):
         # test that 1 + 1 = 2
 
         print("hello")
-        print(ImgLib.__dict__)
+        #print(ImgLib.__dict__)
         dir(ImgLib)
 
         p = ImgLib.ImgLibrary("test.jpg")

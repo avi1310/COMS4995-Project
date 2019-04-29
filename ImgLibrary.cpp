@@ -341,3 +341,4 @@ namespace imglib {
 		return *this;
 	}
 }
+

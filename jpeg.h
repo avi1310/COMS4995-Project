@@ -18,8 +18,8 @@ namespace marengo
 		private:
 			// Note that m_errorMgr is a shared ptr and will be shared
 			// between objects if one copy constructs from another
-			std::shared_ptr<::jpeg_error_mgr> m_errorMgr;
-			std::vector<std::vector<uint8_t>> m_bitmapData;
+			std::shared_ptr< ::jpeg_error_mgr > m_errorMgr;
+			std::vector< std::vector<uint8_t> > m_bitmapData;
 			size_t                            m_width;
 			size_t                            m_height;
 			size_t                            m_pixelSize;

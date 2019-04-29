@@ -1,7 +1,3 @@
-//
-// Created by Aviral Gupta on 2019-04-21.
-//
-
 #ifndef COMS4995_PROJECT_IMGLIBRARY_H
 #define COMS4995_PROJECT_IMGLIBRARY_H
 
@@ -9,6 +5,10 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+
+#include <pybind11/pybind11.h>
+
+namespace py = pybind11;
 
 using namespace marengo::jpeg;
 
@@ -71,5 +71,32 @@ namespace imglib {
 	};
 }
 
+
+PYBIND11_MODULE(ImgLibrary, m) {
+	m.doc() = "Image Manipulation library written in C++";
+
+	py::class_<imglib::ImgLibrary>(m, "ImgLibrary")
+		.def(py::init<>())
+		.def(py::init<char *>())
+		.def("save", &imglib::ImgLibrary::save,
+			py::arg("fileName"), py::arg("quality") = 95)
+		.def("grayScale", &imglib::ImgLibrary::grayScale)
+		.def("flipHorizontal", &imglib::ImgLibrary::flipHorizontal)
+		.def("flipVertical", &imglib::ImgLibrary::flipVertical)
+		.def("blur", &imglib::ImgLibrary::blur)
+		.def("resize", &imglib::ImgLibrary::resize)
+		.def("edgeDetection", &imglib::ImgLibrary::edgeDetection)
+		.def("luminanceScaling", &imglib::ImgLibrary::luminanceScaling)
+		.def("cropImage", &imglib::ImgLibrary::cropImage)
+		.def("masking", &imglib::ImgLibrary::masking)
+		.def("brightnessMod", &imglib::ImgLibrary::brightnessMod)
+		.def("contrastMod", &imglib::ImgLibrary::contrastMod)
+		.def("rotateAntiClockwise", &imglib::ImgLibrary::rotateAntiClockwise)
+		.def("rotateClockwise", &imglib::ImgLibrary::rotateClockwise)
+		.def("rotate180", &imglib::ImgLibrary::rotate180)
+		.def("padding", &imglib::ImgLibrary::padding)
+		.def("invert", &imglib::ImgLibrary::invert);
+
+};
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

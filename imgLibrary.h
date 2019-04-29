@@ -36,7 +36,6 @@ namespace imglib {
 
 		ImgLibrary& grayScale();
 
-		//Need to check error with setPixel which is commented out;
 		ImgLibrary& flipHorizontal();
 
 		ImgLibrary& flipVertical();
@@ -69,34 +68,34 @@ namespace imglib {
 		ImgLibrary& invert();
 
 	};
-}
 
-
-PYBIND11_MODULE(ImgLibrary, m) {
+	PYBIND11_MODULE(ImgLibrary, m) {
 	m.doc() = "Image Manipulation library written in C++";
 
-	py::class_<imglib::ImgLibrary>(m, "ImgLibrary")
+	py::class_<ImgLibrary>(m, "ImgLibrary")
 		.def(py::init<>())
 		.def(py::init<char *>())
-		.def("save", &imglib::ImgLibrary::save,
+		.def("save", &ImgLibrary::save,
 			py::arg("fileName"), py::arg("quality") = 95)
-		.def("grayScale", &imglib::ImgLibrary::grayScale)
-		.def("flipHorizontal", &imglib::ImgLibrary::flipHorizontal)
-		.def("flipVertical", &imglib::ImgLibrary::flipVertical)
-		.def("blur", &imglib::ImgLibrary::blur)
-		.def("resize", &imglib::ImgLibrary::resize)
-		.def("edgeDetection", &imglib::ImgLibrary::edgeDetection)
-		.def("luminanceScaling", &imglib::ImgLibrary::luminanceScaling)
-		.def("cropImage", &imglib::ImgLibrary::cropImage)
-		.def("masking", &imglib::ImgLibrary::masking)
-		.def("brightnessMod", &imglib::ImgLibrary::brightnessMod)
-		.def("contrastMod", &imglib::ImgLibrary::contrastMod)
-		.def("rotateAntiClockwise", &imglib::ImgLibrary::rotateAntiClockwise)
-		.def("rotateClockwise", &imglib::ImgLibrary::rotateClockwise)
-		.def("rotate180", &imglib::ImgLibrary::rotate180)
-		.def("padding", &imglib::ImgLibrary::padding)
-		.def("invert", &imglib::ImgLibrary::invert);
+		.def("grayScale", &ImgLibrary::grayScale)
+		.def("flipHorizontal", &ImgLibrary::flipHorizontal)
+		.def("flipVertical", &ImgLibrary::flipVertical)
+		.def("blur", &ImgLibrary::blur)
+		.def("resize", &ImgLibrary::resize)
+		.def("edgeDetection", &ImgLibrary::edgeDetection)
+		.def("luminanceScaling", &ImgLibrary::luminanceScaling)
+		.def("cropImage", &ImgLibrary::cropImage)
+		.def("masking", &ImgLibrary::masking)
+		.def("brightnessMod", &ImgLibrary::brightnessMod)
+		.def("contrastMod", &ImgLibrary::contrastMod)
+		.def("rotateAntiClockwise", &ImgLibrary::rotateAntiClockwise)
+		.def("rotateClockwise", &ImgLibrary::rotateClockwise)
+		.def("rotate180", &ImgLibrary::rotate180)
+		.def("padding", &ImgLibrary::padding)
+		.def("invert", &ImgLibrary::invert);
 
 };
+}
+
 
 #endif //COMS4995_PROJECT_IMGLIBRARY_H

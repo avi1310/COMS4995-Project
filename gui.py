@@ -10,7 +10,6 @@ import numpy as np
 image_path = None
 PATH = None
 
-
 def greyScale(path):
     # return img
     ImgLibrary.ImgLibrary(path).grayScale().save('output_temp.jpeg')
@@ -53,67 +52,70 @@ def invert(path):
 
 
 def option_changed(variable, panel, path):
+    global PATH
+    PATH = path
     print(variable.get())
     if variable.get() == "grayScale":
-        img_out_path = greyScale(path)
+        img_out_path = greyScale(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference
     elif variable.get() == "rotateClockwise":
-        img_out_path = rotateClockwise(path)
+        img_out_path = rotateClockwise(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference
     elif variable.get() == "blur":
-        img_out_path = blur(path)
+        img_out_path = blur(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference
     elif variable.get() == "rotateAntiClockwise":
-        img_out_path = rotateAntiClockwise(path)
+        img_out_path = rotateAntiClockwise(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference
     elif variable.get() == "rotate180":
-        img_out_path = rotate180(path)
+        img_out_path = rotate180(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference  
     elif variable.get() == "flipHorizontal":
-        img_out_path = flipHorizontal(path)
+        img_out_path = flipHorizontal(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference
     elif variable.get() == "flipVertical":
-        img_out_path = flipVertical(path)
+        img_out_path = flipVertical(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference   
     elif variable.get() == "edgeDetection":
-        img_out_path = edgeDetection(path)
+        img_out_path = edgeDetection(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference 
     elif variable.get() == "invert":
-        img_out_path = invert(path)
+        img_out_path = invert(PATH)
         variable.set(variable.get())
         img = ImageTk.PhotoImage(Image.open(img_out_path))
         panel.configure(image=img)
         panel.img = img  # keep a reference     
-
+    PATH = img_out_path
 
 def show_gui(path):
+    global PATH
     window = tk.Tk()
     window.title("ImgLibrary App")
-
+    PATH = path
     img = ImageTk.PhotoImage(Image.open(path))
     h = img.height() + 300
     w = img.width() + 10
@@ -130,7 +132,7 @@ def show_gui(path):
             "edgeDetection", "invert"]
     variable = StringVar(window)
     variable.set(apis[0]) # default
-    variable.trace("w", lambda *args: option_changed(variable, panel, path))
+    variable.trace("w", lambda *args: option_changed(variable, panel, PATH))
     w = OptionMenu(window, variable, *apis)
     w.pack(side="top", anchor="e")
     window.mainloop()

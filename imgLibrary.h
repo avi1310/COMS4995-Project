@@ -87,6 +87,9 @@ namespace imglib {
 		// Inverts the colors in the image
 		ImgLibrary& invert();
 
+		size_t getHeight()    const { return output.getHeight(); }
+		size_t getWidth()     const { return output.getWidth();  }
+
 	};
 
 	//Python wrapper for library. Requires pybind11 to be installed.
@@ -113,7 +116,9 @@ namespace imglib {
 		.def("rotateClockwise", &ImgLibrary::rotateClockwise)
 		.def("rotate180", &ImgLibrary::rotate180)
 		.def("padding", &ImgLibrary::padding)
-		.def("invert", &ImgLibrary::invert);
+		.def("invert", &ImgLibrary::invert)
+		.def("getHeight", &ImgLibrary::getHeight)
+		.def("getWidth", &ImgLibrary::getWidth);
 
 	};
 }

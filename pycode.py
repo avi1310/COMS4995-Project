@@ -31,4 +31,6 @@ img.invert();
 temp.save("output_inverted_rotate_temp.jpg")
 img.save("output_inverted_rotate_img.jpg")
 
+print(img.getHeight(), img.getWidth())
+
 # somecode = cppimport.imp("ImgLibrary")

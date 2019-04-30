@@ -25,38 +25,6 @@ namespace marengo
 			size_t                            m_pixelSize;
 			int                               m_colourSpace;
 
-			// explicit Image(
-			//     const size_t x,
-			//     const size_t y,
-			//     const std::vector<std::vector<uint8_t>> bitmap_Data,
-			//     const size_t pixelSize = 3,
-			//     const int colourSpace = 2
-			// )
-			// {
-			//     m_errorMgr = std::make_shared<::jpeg_error_mgr>();
-			//     // Note this usage of a lambda to provide our own error handler
-			//     // to libjpeg. If we do not supply a handler, and libjpeg hits
-			//     // a problem, it just prints the error message and calls exit().
-			//     m_errorMgr->error_exit = [](::j_common_ptr cinfo){
-			//         char jpegLastErrorMsg[JMSG_LENGTH_MAX];
-			//         // Call the function pointer to get the error message
-			//         (*(cinfo->err->format_message))(cinfo, jpegLastErrorMsg);
-			//         throw std::runtime_error(jpegLastErrorMsg);
-			//     };
-
-			//     m_width       = x;
-			//     m_height      = y;
-			//     m_pixelSize   = pixelSize;
-			//     m_colourSpace = colourSpace;
-
-			//     m_bitmapData.clear();
-			//     m_bitmapData.reserve(m_height);
-
-			//     for(size_t i = 0; i < m_height && i < bitmap_Data.size(); ++i){
-			//         for(size_t j = 0; i < m_height &&)
-			//     }
-			// }
-
 		public:
 			explicit Image(
 					const size_t x,
@@ -65,7 +33,7 @@ namespace marengo
 					const int colourSpace = 2
 			);
 
-			// Currently can only construct with an existing file.
+			// Construct with an existing file.
 			// Will throw if file cannot be loaded, or is in the wrong format,
 			// or some other error is encountered.
 			explicit Image( const std::string& fileName );
@@ -75,21 +43,11 @@ namespace marengo
 			// original we have in memory.
 			Image( const Image& rhs );
 
-			// But assigment and move operations are currently disallowed
-			// Image& operator=( const Image& );
-			// Image( Image&& )                 = delete;
-			// Image& operator=( Image&& )      = delete;
-
-			// pass in the values
-			// Image(size_t m_width, size_t m_height, size_t m_pixelSize);
-			// Image(size_t, size_t, size_t) = delete;
 			~Image();
 
 			Image();
 
-			// Will throw if file cannot be saved. If no
-			// filename is supplied, writes to fileName supplied in load()
-			// (if that was called, otherwise throws)
+			// Will throw if file cannot be saved.
 			// Quality's usable values are 0-100
 			void save( const std::string& fileName, int quality = 95 ) const;
 
@@ -105,8 +63,9 @@ namespace marengo
 			// Elements for the latter will be in order R, G, B.
 			std::vector<uint8_t> getPixel( size_t x, size_t y ) const;
 
+			// Used to set one pixel's value at the x,y coordinate. Takes
+			// in a vector of subpixels.
 			void setPixel(size_t x, size_t y, std::vector<uint8_t> pixelValue);
-			// void setPixel(size_t x, size_t y, size_t pixelValue) const;
 
 			// Returns a fast approximation of perceived brightness for RGB images.
 			// For monochrome, will just return the pixel's value directly.

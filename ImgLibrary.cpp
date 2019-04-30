@@ -166,23 +166,23 @@ namespace imglib {
 		return *this;
 	}
 
-	ImgLibrary& ImgLibrary::cropImage(size_t xOffset, size_t yOffset, size_t widthCrop, size_t heightCrop) {
-		if (xOffset < 0 || xOffset >= output.getWidth()) {
+	ImgLibrary& ImgLibrary::cropImage(int xOffset, int yOffset, int widthCrop, int heightCrop) {
+		if (xOffset < 0 || xOffset >= int(output.getWidth())) {
 			throw std::out_of_range("xOffset is out of range");
 		}
-		if (yOffset < 0 || yOffset >= output.getHeight()){
+		if (yOffset < 0 || yOffset >= int(output.getHeight())){
 			throw std::out_of_range("yOffset is out of range");
 		}
-		if (widthCrop < 0 || widthCrop > output.getWidth()) {
+		if (widthCrop < 0 || widthCrop > int(output.getWidth())) {
 			throw std::out_of_range("widthCrop is out of range");
 		}
-		if (heightCrop < 0 || heightCrop >= output.getHeight()){
+		if (heightCrop < 0 || heightCrop >= int(output.getHeight())) {
 			throw std::out_of_range("heightCrop is out of range");
 		}
 
 		Image temp(widthCrop, heightCrop);
-		for(size_t i=xOffset, i1=0; i<xOffset+widthCrop; i++, i1++){
-			for(size_t j=yOffset, j1=0; j<yOffset+heightCrop; j++, j1++){
+		for(int i=xOffset, i1=0; i<xOffset+widthCrop; i++, i1++){
+			for(int j=yOffset, j1=0; j<yOffset+heightCrop; j++, j1++){
 				temp.setPixel(i1, j1, output.getPixel(i,j));
 			}
 		}
@@ -191,23 +191,23 @@ namespace imglib {
 		return *this;
 	}
 
-	ImgLibrary& ImgLibrary::masking(size_t xOffset, size_t yOffset, size_t widthMask, size_t heightMask) {
+	ImgLibrary& ImgLibrary::masking(int xOffset, int yOffset, int widthMask, int heightMask) {
 		// Masking
-		if (xOffset < 0 || xOffset >= output.getWidth()) {
+		if (xOffset < 0 || xOffset >= int(output.getWidth())) {
 			throw std::out_of_range("xOffset is out of range");
 		}
-		if (yOffset < 0 || yOffset >= output.getHeight()){
+		if (yOffset < 0 || yOffset >= int(output.getHeight())) {
 			throw std::out_of_range("yOffset is out of range");
 		}
-		if (widthMask < 0 || widthMask > output.getWidth()) {
+		if (widthMask < 0 || widthMask > int(output.getWidth())) {
 			throw std::out_of_range("widthMask is out of range");
 		}
-		if (heightMask < 0 || heightMask >= output.getHeight()){
+		if (heightMask < 0 || heightMask >= int(output.getHeight())) {
 			throw std::out_of_range("heightMask is out of range");
 		}
 
-		for(size_t y = yOffset-1; y < yOffset+heightMask-1 && y < output.getHeight(); y++) {
-			for(size_t x = xOffset-1; x < xOffset+widthMask-1 && x < output.getWidth(); x++) {
+		for(int y = yOffset-1; y < yOffset+heightMask-1 && y < int(output.getHeight()); y++) {
+			for(int x = xOffset-1; x < xOffset+widthMask-1 && x < int(output.getWidth()); x++) {
 					output.setPixel(x,y, {0,0,0});
 			}
 		}

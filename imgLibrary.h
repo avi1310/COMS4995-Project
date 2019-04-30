@@ -61,10 +61,10 @@ namespace imglib {
 		ImgLibrary& luminanceScaling(int factor);
 
 		// Crop an image starting at the xOffset, yOffset, with a box of size widthCrop*heightCrop
-		ImgLibrary& cropImage(size_t xOffset, size_t yOffset, size_t widthCrop, size_t heightCrop);
+		ImgLibrary& cropImage(int xOffset, int yOffset, int widthCrop, int heightCrop);
 
 		// Adds a black mask layer starting at the xOffset, yOffset, with a box of size widthCrop*heightCrop
-		ImgLibrary& masking(size_t xOffset, size_t yOffset, size_t xWidth, size_t yWidth);
+		ImgLibrary& masking(int xOffset, int yOffset, int xWidth, int yWidth);
 
 		// Modifies the brightness of the image
 		ImgLibrary& brightnessMod(double beta);
@@ -115,7 +115,7 @@ namespace imglib {
 		.def("padding", &ImgLibrary::padding)
 		.def("invert", &ImgLibrary::invert);
 
-};
+	};
 }
 
 

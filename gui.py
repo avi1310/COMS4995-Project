@@ -85,7 +85,7 @@ def show_gui(path):
     window.title("ImgLibrary App")
     PATH = path
     img = ImageTk.PhotoImage(Image.open(path))
-    h = img.height() + 300
+    h = img.height() + 350
     w = img.width() + 10
     geom = str(h) + "x" + str(w)
     print(geom)

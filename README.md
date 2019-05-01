@@ -218,7 +218,7 @@ The image object with its colors inverted.
 
 ## <a name="save"></a>17. save
 ```
-img.save(string fileName, int quality);
+img.save(char *fileName, int quality);
 ```
 ### Arguments
 The fileName with which the new object will be saved. The quality of the saved image. A value of 100 would be the best possible quality.

@@ -145,10 +145,10 @@ namespace imglib {
 	ImgLibrary& ImgLibrary::luminanceScaling(int factor) {
 		// Luminance Modification
 
-		if (factor <= MIN_LUMINANCE) {
+		if (factor < MIN_LUMINANCE) {
 			throw std::out_of_range("Luminance too low");
 		}
-		if (factor >= MAX_LUMINANCE) {
+		if (factor > MAX_LUMINANCE) {
 			throw std::out_of_range("Luminance value too high");
 		}
 		for(size_t y = 0; y < output.getHeight(); y++) {
@@ -173,10 +173,10 @@ namespace imglib {
 		if (yOffset < 0 || yOffset >= int(output.getHeight())){
 			throw std::out_of_range("yOffset is out of range");
 		}
-		if (widthCrop < 0 || widthCrop > int(output.getWidth())) {
+		if (widthCrop < 0 || (widthCrop + xOffset) >= int(output.getWidth())) {
 			throw std::out_of_range("widthCrop is out of range");
 		}
-		if (heightCrop < 0 || heightCrop >= int(output.getHeight())) {
+		if (heightCrop < 0 || (heightCrop + yOffset) >= int(output.getHeight())) {
 			throw std::out_of_range("heightCrop is out of range");
 		}
 
@@ -199,10 +199,10 @@ namespace imglib {
 		if (yOffset < 0 || yOffset >= int(output.getHeight())) {
 			throw std::out_of_range("yOffset is out of range");
 		}
-		if (widthMask < 0 || widthMask > int(output.getWidth())) {
+		if (widthMask < 0 || (widthMask + xOffset) >= int(output.getWidth())) {
 			throw std::out_of_range("widthMask is out of range");
 		}
-		if (heightMask < 0 || heightMask >= int(output.getHeight())) {
+		if (heightMask < 0 || (heightMask + yOffset) >= int(output.getHeight())) {
 			throw std::out_of_range("heightMask is out of range");
 		}
 

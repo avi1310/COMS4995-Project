@@ -1,14 +1,17 @@
 #ifndef COMS4995_PROJECT_IMGLIBRARY_H
 #define COMS4995_PROJECT_IMGLIBRARY_H
 
+#define PY_INC 0
+
 #include "jpeg.h"
 #include <iostream>
 #include <string>
 #include <stdexcept>
 
-#include <pybind11/pybind11.h>
-
-namespace py = pybind11;
+#if PY_INC == 1
+	#include <pybind11/pybind11.h>
+	namespace py = pybind11;
+#endif
 
 using namespace marengo::jpeg;
 
@@ -92,35 +95,37 @@ namespace imglib {
 
 	};
 
-	//Python wrapper for library. Requires pybind11 to be installed.
-	PYBIND11_MODULE(ImgLibrary, m) {
-	m.doc() = "Image Manipulation library written in C++";
+	#if PY_INC == 1
+		//Python wrapper for library. Requires pybind11 to be installed.
+		PYBIND11_MODULE(ImgLibrary, m) {
+		m.doc() = "Image Manipulation library written in C++";
 
-	py::class_<ImgLibrary>(m, "ImgLibrary")
-		.def(py::init<>())
-		.def(py::init<char *>())
-		.def("save", &ImgLibrary::save,
-			py::arg("fileName"), py::arg("quality") = 95)
-		.def("grayScale", &ImgLibrary::grayScale)
-		.def("flipHorizontal", &ImgLibrary::flipHorizontal)
-		.def("flipVertical", &ImgLibrary::flipVertical)
-		.def("blur", &ImgLibrary::blur)
-		.def("resize", &ImgLibrary::resize)
-		.def("edgeDetection", &ImgLibrary::edgeDetection)
-		.def("luminanceScaling", &ImgLibrary::luminanceScaling)
-		.def("cropImage", &ImgLibrary::cropImage)
-		.def("masking", &ImgLibrary::masking)
-		.def("brightnessMod", &ImgLibrary::brightnessMod)
-		.def("contrastMod", &ImgLibrary::contrastMod)
-		.def("rotateAntiClockwise", &ImgLibrary::rotateAntiClockwise)
-		.def("rotateClockwise", &ImgLibrary::rotateClockwise)
-		.def("rotate180", &ImgLibrary::rotate180)
-		.def("padding", &ImgLibrary::padding)
-		.def("invert", &ImgLibrary::invert)
-		.def("getHeight", &ImgLibrary::getHeight)
-		.def("getWidth", &ImgLibrary::getWidth);
+		py::class_<ImgLibrary>(m, "ImgLibrary")
+			.def(py::init<>())
+			.def(py::init<char *>())
+			.def("save", &ImgLibrary::save,
+				py::arg("fileName"), py::arg("quality") = 95)
+			.def("grayScale", &ImgLibrary::grayScale)
+			.def("flipHorizontal", &ImgLibrary::flipHorizontal)
+			.def("flipVertical", &ImgLibrary::flipVertical)
+			.def("blur", &ImgLibrary::blur)
+			.def("resize", &ImgLibrary::resize)
+			.def("edgeDetection", &ImgLibrary::edgeDetection)
+			.def("luminanceScaling", &ImgLibrary::luminanceScaling)
+			.def("cropImage", &ImgLibrary::cropImage)
+			.def("masking", &ImgLibrary::masking)
+			.def("brightnessMod", &ImgLibrary::brightnessMod)
+			.def("contrastMod", &ImgLibrary::contrastMod)
+			.def("rotateAntiClockwise", &ImgLibrary::rotateAntiClockwise)
+			.def("rotateClockwise", &ImgLibrary::rotateClockwise)
+			.def("rotate180", &ImgLibrary::rotate180)
+			.def("padding", &ImgLibrary::padding)
+			.def("invert", &ImgLibrary::invert)
+			.def("getHeight", &ImgLibrary::getHeight)
+			.def("getWidth", &ImgLibrary::getWidth);
 
-	};
+		};
+	#endif
 }
 
 

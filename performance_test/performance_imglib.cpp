@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <chrono>
-#include "ImgLibrary.h"
+#include "../ImgLibrary.h"
 using namespace std;
 #include <iostream>
 using namespace imglib;

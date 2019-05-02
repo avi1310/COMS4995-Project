@@ -16,7 +16,7 @@ img.grayScale().flipHorizontal().flipVertical().blur()
 
 img.padding(20)
 img.save("output_padded.jpg")
-img.cropImage(20,20,1920,1080)
+img.cropImage(20,20,img.getWidth()-50,img.getHeight()-50)
 img.save("output_cropped.jpg")
 
 #Does not work. Deepcopy is not implemented. No idea how to.

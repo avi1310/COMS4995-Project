@@ -1,4 +1,4 @@
-# COMS4995-Project
+# ImgLibrary
 
 # Table of Contents 
 * [Introduction](#intro)

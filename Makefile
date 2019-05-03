@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -O3 -std=c++14 -Wall -Wextra -Wpedantic -Werror -ljpeg
+CXXFLAGS = -O3 -Wall -Wextra -Wpedantic -Werror -shared -ljpeg -std=c++17
 UNIXFLAGS = -undefined dynamic_lookup
 PYFLAGS = -Dpywrapper -fPIC
 

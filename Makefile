@@ -1,14 +1,20 @@
-.PHONY: debug, clean
+CXX = g++
+CXXFLAGS = -O3 -std=c++14 -Wall -Wextra -Wpedantic -Werror -ljpeg
+UNIXFLAGS = -undefined dynamic_lookup
+PYFLAGS = -Dpywrapper -fPIC
 
-test:
-# 	g++ -O3 -std=c++14 -Wall -Wextra -Wpedantic -Werror -o test *.cpp -ljpeg
-	g++ -O3 -Wall -Wextra -Wpedantic -Werror -shared -ljpeg -std=c++17 -undefined dynamic_lookup -fPIC `python3 -m pybind11 --includes` *.cpp -o ImgLibrary`python3-config --extension-suffix`
+ifneq ($(OS),Windows_NT)     # is Windows_NT on XP, 2000, 7, Vista, 10...
+    PYFLAGS += -undefined dynamic_lookup
+endif
 
-debug:
-# 	g++ -g -O0 -std=c++14 -Wall -Wextra -Wpedantic -Werror -o test *.cpp -ljpeg
-	g++ -O3 -O0 -Wall -Wextra -Wpedantic -Werror -shared -ljpeg -std=c++17 -undefined dynamic_lookup -fPIC `python3 -m pybind11 --includes` *.cpp -o ImgLibrary`python3-config --extension-suffix`
+test: main.cpp ImgLibrary.cpp jpeg.cpp
+	$(CXX) $(CXXFLAGS) $(LFLAGS) -o test main.cpp ImgLibrary.cpp jpeg.cpp
+
+python: ImgLibrary.cpp jpeg.cpp
+	$(CXX) $(CXXFLAGS) $(LFLAGS) $(PYFLAGS) `python3 -m pybind11 --includes` ImgLibrary.cpp jpeg.cpp -o ImgLibrary`python3-config --extension-suffix`
 
 clean:
-	rm -f test
-	rm -f *.so
-	rm -f output*
+	rm -f test		#CPP Executable
+	rm -f *.so		#Python wrapper binary
+	rm -f output*		#All output images named output*
+	rm -f *.o		#Object files

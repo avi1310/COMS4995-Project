@@ -6,9 +6,11 @@
 #include <string>
 #include <stdexcept>
 
+#ifdef pywrapper
 #include <pybind11/pybind11.h>
 
 namespace py = pybind11;
+#endif
 
 using namespace marengo::jpeg;
 
@@ -92,6 +94,7 @@ namespace imglib {
 
 	};
 
+#ifdef pywrapper
 	//Python wrapper for library. Requires pybind11 to be installed.
 	PYBIND11_MODULE(ImgLibrary, m) {
 	m.doc() = "Image Manipulation library written in C++";
@@ -121,6 +124,7 @@ namespace imglib {
 		.def("getWidth", &ImgLibrary::getWidth);
 
 	};
+#endif //pywrapper
 }
 
 

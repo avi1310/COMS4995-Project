@@ -4,7 +4,10 @@ UNIXFLAGS = -undefined dynamic_lookup
 PYFLAGS = -shared -Dpywrapper -fPIC
 
 ifneq ($(OS),Windows_NT)     # is Windows_NT on XP, 2000, 7, Vista, 10...
-    PYFLAGS += -undefined dynamic_lookup
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Darwin)
+	    PYFLAGS += -undefined dynamic_lookup
+	endif
 endif
 
 test: main.cpp ImgLibrary.cpp jpeg.cpp

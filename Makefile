@@ -1,7 +1,7 @@
 CXX = g++
-CXXFLAGS = -O3 -Wall -Wextra -Wpedantic -Werror -shared -ljpeg -std=c++17
+CXXFLAGS = -O3 -Wall -Wextra -Wpedantic -Werror -ljpeg -std=c++17
 UNIXFLAGS = -undefined dynamic_lookup
-PYFLAGS = -Dpywrapper -fPIC
+PYFLAGS = -shared -Dpywrapper -fPIC
 
 ifneq ($(OS),Windows_NT)     # is Windows_NT on XP, 2000, 7, Vista, 10...
     PYFLAGS += -undefined dynamic_lookup

@@ -49,7 +49,29 @@ def invert(path):
     ImgLibrary.ImgLibrary(path).invert().save('output_temp.jpeg')
     return 'output_temp.jpeg'
 
+def luminanceScaling(path):
+    ImgLibrary.ImgLibrary(path).luminanceScaling(2).save('output_temp.jpeg')
+    return 'output_temp.jpeg'
 
+def cropImage(path):
+    ImgLibrary.ImgLibrary(path).cropImage(100, 100, 200, 200).save('output_temp.jpeg')
+    return 'output_temp.jpeg'
+
+def masking(path):
+    ImgLibrary.ImgLibrary(path).masking(100, 100, 100, 100).save('output_temp.jpeg')
+    return 'output_temp.jpeg'
+
+def brightnessMod(path):
+    ImgLibrary.ImgLibrary(path).brightnessMod(1.5).save('output_temp.jpeg')
+    return 'output_temp.jpeg'
+
+def contrastMod(path):
+    ImgLibrary.ImgLibrary(path).contrastMod(2).save('output_temp.jpeg')
+    return 'output_temp.jpeg'
+
+def padding(path):
+    ImgLibrary.ImgLibrary(path).padding(15).save('output_temp.jpeg')
+    return 'output_temp.jpeg'
 
 def option_changed(variable, panel, path):
     global PATH
@@ -73,6 +95,19 @@ def option_changed(variable, panel, path):
         img_out_path = edgeDetection(PATH)
     elif variable.get() == "invert":
         img_out_path = invert(PATH)
+    elif variable.get() == "luminanceScaling":
+        img_out_path = luminanceScaling(PATH)
+    elif variable.get() == "cropImage":
+        img_out_path = cropImage(PATH)
+    elif variable.get() == "masking":
+        img_out_path = masking(PATH)
+    elif variable.get() == "brightnessMod":
+        img_out_path = brightnessMod(PATH)
+    elif variable.get() == "contrastMod":
+        img_out_path = contrastMod(PATH)
+    elif variable.get() == "padding":
+        img_out_path = padding(PATH)
+
     variable.set(variable.get())
     img = ImageTk.PhotoImage(Image.open(img_out_path))
     panel.configure(image=img)
@@ -94,9 +129,9 @@ def show_gui(path):
     # panel.pack(side="bottom", fill="both", expand="yes")
     panel.place(relx=0.0, rely=0.0, anchor="nw")
 
-    apis = ["rotateClockwise", "rotateAntiClockwise", "flipHorizontal", "grayScale", "blur",
-            "flipVertical", "luminanceMod", "brightnessMod", "contrastMod",
-            "crop", "mask", "padding", "rotate180",
+    apis = ["rotateClockwise", "rotateAntiClockwise", "rotate180", "flipHorizontal", "grayScale", "blur",
+            "flipVertical", "luminanceScaling", "brightnessMod", "contrastMod",
+            "cropImage", "masking", "padding",
             "edgeDetection", "invert"]
     variable = StringVar(window)
     variable.set(apis[0]) # default

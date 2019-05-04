@@ -6,6 +6,8 @@ img = ImgLibrary.ImgLibrary("test.jpg")
 # Create a new image. Currently useless, don't use!
 temp = ImgLibrary.ImgLibrary()
 
+img.edgeDetection().save("output_edge.jpg")
+
 img.grayScale().flipHorizontal().flipVertical().blur()
 img.padding(20)
 img.save("output_padded.jpg")

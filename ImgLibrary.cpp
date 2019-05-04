@@ -93,11 +93,11 @@ namespace imglib {
 		// Edge detection
 		Image img = output;
 
-	//         float kernel[3][3] = {
-	//             {-1, -1, -1},
-	//             {-1, 8, -1},
-	//             {-1, -1, -1},
-	//         };
+	        // float kernel[3][3] = {
+	        //     {-1, -1, -1},
+	        //     {-1, 8, -1},
+	        //     {-1, -1, -1},
+	        // };
 	//         float kernel[3][3] = {
 	//             {-1, -1, -1},
 	//             {2, 2, 2},

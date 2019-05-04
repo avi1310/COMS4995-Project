@@ -12,9 +12,9 @@ int main( int argc, char* argv[] )
         return 1;
     }
     try {
-        ImgLibrary testImg1(argv[1]);
+        ImgLibrary img(argv[1]);
 
-        testImg1
+        img
             .padding(40)
             .invert()
             .rotateClockwise()

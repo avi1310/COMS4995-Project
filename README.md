@@ -29,6 +29,15 @@ Image manipulation is one of the primary techniques used in Computer Vision rese
 # <a name="get-started"></a>Getting Started
 To get started, clone this repository. <Add the steps>
 
+```
+git https://github.com/avi1310/COMS4995-Project.git
+cd COMS4995-Project
+make
+./test test.jpg
+```
+
+To create the python wrapper, run ```make python```
+
 # <a name="documentation"></a>Documentation
 This section describes the various APIs provided by the library and their usage.
 

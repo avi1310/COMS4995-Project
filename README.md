@@ -38,6 +38,16 @@ make
 
 To create the python wrapper, run ```make python```
 
+Create an object of ImgLibrary
+```
+ImgLibrary img(<path to JPEG file>);
+```
+In Python:
+```
+img = ImgLibrary(<path to JPEG file>)
+```
+Refer to the Documentation (https://github.com/avi1310/COMS4995-Project/wiki/Documentation) for detailed instructions.
+
 # <a name="documentation"></a>Documentation
 This section describes the various APIs provided by the library and their usage.
 

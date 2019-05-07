@@ -30,7 +30,7 @@ Image manipulation is one of the primary techniques used in Computer Vision rese
 To get started, clone this repository. <Add the steps>
 
 ```
-git https://github.com/avi1310/COMS4995-Project.git
+git clone https://github.com/avi1310/COMS4995-Project.git
 cd COMS4995-Project
 make
 ./test test.jpg
